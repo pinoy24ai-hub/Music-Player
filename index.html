@@ -853,7 +853,7 @@
         <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         Watch on YouTube
       </a>
-      <span class="v2-badge">v2.0 &middot; Cloudflare</span>
+      <a class="v2-badge" href="https://cloudflare.com" target="_blank" rel="noopener noreferrer">v2.0 &middot; Cloudflare</a>
     </div>
   </div>
 </header>
@@ -1039,9 +1039,13 @@ var SONGS = [
   { title: "Sayaw Ng Puso (Funk-Pop)",          file: "Sayaw Ng Puso (Funk-Pop).mp3",           lang: 'tl',  volIdx: 1 },
   { title: "Sayaw Pa Tayo",                     file: "Sayaw Pa Tayo.mp3",          duration: "3:30", lang: 'tl', volIdx: 1 },
   { title: "Sumasayaw sa Alon",                 file: "Sumasayaw sa Alon.mp3",                  lang: 'tl',  volIdx: 1 },
-  { title: "We Keep Dancing (Bachata 2)",       file: "We Keep Dancing (Bachata 2).mp3",        lang: 'en',  volIdx: 1 },
-  { title: "We Keep Dancing (Batchata)",        file: "We Keep Dancing (Batchata).mp3",         lang: 'en',  volIdx: 1 },
-  { title: "We Keep Dancing",                   file: "We Keep Dancing (Cha-Cha).mp3",          lang: 'en',  volIdx: 1 },
+  { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 1 },
+  { title: "Dito Ka Sa Akin (Synth-Pop2)",      file: "Dito Ka Sa AKin (Synth-Pop2).mp3",       lang: 'tl',  volIdx: 1 },
+  { title: "Hawakan Ang Ngayon (Synth-Pop)",    file: "Hawakan Ang Ngayon (Synth-Pop).mp3",     lang: 'tl',  volIdx: 1 },
+  { title: "Hawakan Ang Ngayon (Synth-Pop2)",   file: "Hawakan Ang Ngayon (Synth-Pop2).mp3",    lang: 'tl',  volIdx: 1 },
+  { title: "We Keep Dancing (Bachata 2)",       file: "We Keep Dancing (Bachata 2).mp3",        lang: 'en',  volIdx: 0 },
+  { title: "We Keep Dancing (Batchata)",        file: "We Keep Dancing (Batchata).mp3",         lang: 'en',  volIdx: 0 },
+  { title: "We Keep Dancing",                   file: "We Keep Dancing (Cha-Cha).mp3",          lang: 'en',  volIdx: 0 },
 
   // ── Vol 2: Chill & Bossa ───────────────────────────────────────
   { title: "Beneath the Silver Moon",           file: "Beneath the Silver Moon.mp3",            lang: 'en',  volIdx: 2 },
@@ -1079,12 +1083,12 @@ var SONGS = [
   { title: "Hanggang sa Huli",                  file: "Hanggang sa Huli.mp3",       duration: "3:16", lang: 'tl', volIdx: 3 },
   { title: "Hanggang Sa Huli (Ballad)",         file: "Hanggang Sa Huli (Ballad).mp3",          lang: 'tl',  volIdx: 3 },
   { title: "Hanggang Sa Huli (Duet)",           file: "Hanggang Sa Huli (Duet).mp3",            lang: 'tl',  volIdx: 3 },
-  { title: "Hanggang Sa Huli (R&B)",            file: "Hanggang Sa Huli (R&B).mp3",             lang: 'tl',  volIdx: 3 },
-  { title: "Hanggang Sa Huli (R&B Ver2)",       file: "Hanggang Sa Huli (R&B Ver2).mp3",        lang: 'tl',  volIdx: 3 },
+  { title: "Hanggang Sa Huli (R&B)",            file: "Hanggang Sa Huli (R&B).mp3",             lang: 'tl',  volIdx: 4 },
+  { title: "Hanggang Sa Huli (R&B Ver2)",       file: "Hanggang Sa Huli (R&B Ver2).mp3",        lang: 'tl',  volIdx: 4 },
   { title: "Hawakan Ang Ngayon",                file: "Hawakan Ang Ngayon.mp3",     duration: "3:30", lang: 'tl', volIdx: 3 },
   { title: "Iisang Guhit",                      file: "Iisang Guhit.mp3",                       lang: 'tl',  volIdx: 3 },
   { title: "Ikaw ang Alon",                     file: "Ikaw ang Alon.mp3",          duration: "3:32", lang: 'tl', volIdx: 3 },
-  { title: "Ikaw Ang Alon (Soul, R&B)",         file: "Ikaw Ang Alon (Soul, R&B).mp3",          lang: 'tl',  volIdx: 3 },
+  { title: "Ikaw Ang Alon (Soul, R&B)",         file: "Ikaw Ang Alon (Soul, R&B).mp3",          lang: 'tl',  volIdx: 4 },
   { title: "Ikaw Ang Lahat Sa Akin",            file: "Ikaw Ang Lahat Sa Akin.mp3",             lang: 'tl',  volIdx: 3 },
   { title: "Ikaw Ang Tahanan",                  file: "Ikaw Ang Tahanan.mp3",       duration: "2:16", lang: 'tl', volIdx: 3 },
   { title: "Ikaw Ang Umaga",                    file: "Ikaw Ang Umaga.mp3",                     lang: 'tl',  volIdx: 3 },
@@ -1096,8 +1100,8 @@ var SONGS = [
   { title: "Himig Ng Ating Kahapon (Pop Ver2)", file: "Himig Ng Ating Kahapon (Pop Ver2).mp3",  lang: 'tl',  volIdx: 3 },
   { title: "Tahanan",                           file: "Tahanan.mp3",                            lang: 'tl',  volIdx: 3 },
   { title: "Tahanan (Ver 2)",                   file: "Tahanan (Ver 2).mp3",                    lang: 'tl',  volIdx: 3 },
-  { title: "Tahanan (R&B Funky)",               file: "Tahanan (R&B Funky).mp3",                lang: 'tl',  volIdx: 3 },
-  { title: "Tahanan (R&B Funky Ver2)",          file: "Tahanan (R&B Funky Ver2).mp3",           lang: 'tl',  volIdx: 3 },
+  { title: "Tahanan (R&B Funky)",               file: "Tahanan (R&B Funky).mp3",                lang: 'tl',  volIdx: 4 },
+  { title: "Tahanan (R&B Funky Ver2)",          file: "Tahanan (R&B Funky Ver2).mp3",           lang: 'tl',  volIdx: 4 },
 
   // ── Vol 4: Heart & Soul ────────────────────────────────────────
   { title: "Ania Ako",                          file: "Ania Ako.mp3",                           lang: 'ceb', volIdx: 4 },
@@ -1170,8 +1174,8 @@ var SONGS = [
   { title: "Home",                              file: "Home.mp3",                               lang: 'en',  volIdx: 7 },
   { title: "Maybe Happy Ending",                file: "Maybe Happy Ending.mp3",                 lang: 'en',  volIdx: 7 },
   { title: "My Safe Place",                     file: "My Safe Place.mp3",                      lang: 'en',  volIdx: 7 },
-  { title: "Not So Bad Afterall",               file: "Not So Bad Afterall.mp3",                lang: 'en',  volIdx: 7 },
-  { title: "Not So Bad Afterall (Indie)",       file: "Not So Bad Afterall (Indie).mp3",        lang: 'en',  volIdx: 7 },
+  { title: "Not So Bad Afterall",               file: "Not So Bad Afterall.mp3",                lang: 'en',  volIdx: 8 },
+  { title: "Not So Bad Afterall (Indie)",       file: "Not So Bad Afterall (Indie).mp3",        lang: 'en',  volIdx: 8 },
   { title: "Old and Gray",                      file: "Old and Gray.mp3",                       lang: 'en',  volIdx: 7 },
   { title: "Sanctuary",                         file: "Sanctuary.mp3",              duration: "3:30", lang: 'en', volIdx: 7 },
   { title: "The Echo",                          file: "The Echo.mp3",                           lang: 'en',  volIdx: 7 },
@@ -1192,7 +1196,7 @@ var SONGS = [
   { title: "Thank You, My Love (Retro-Soul)",   file: "Thank You, My Love (Retro-Soul).mp3",    lang: 'en',  volIdx: 8 },
   { title: "This Time We're Staying",           file: "This Time We're Staying.mp3",            lang: 'en',  volIdx: 8 },
   { title: "Under This Umbrella",               file: "Under This Umbrella.mp3",                lang: 'en',  volIdx: 8 },
-  { title: "You Are My Everything",             file: "You Are My Everything.mp3",              lang: 'en',  volIdx: 8 },
+  { title: "You Are My Everything",             file: "You Are My Everything.mp3",              lang: 'en',  volIdx: 6 },
 
   // ── Vol 9: Sundries ────────────────────────────────────────────
   { title: "Barkada",                           file: "Barkada.mp3",                            lang: 'tl',  volIdx: 9 },
