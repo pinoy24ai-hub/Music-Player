@@ -1398,8 +1398,15 @@ function renderList() {
     groups[vi].push(i);
   });
 
-  var globalNum = 1;
+  // Sort songs within each group alphabetically by title
   Object.keys(groups).forEach(function(vi) {
+    groups[vi].sort(function(a, b) {
+      return SONGS[a].title.toLowerCase().localeCompare(SONGS[b].title.toLowerCase());
+    });
+  });
+
+  var globalNum = 1;
+  Object.keys(groups).sort(function(a, b) { return a - b; }).forEach(function(vi) {
     vi = parseInt(vi);
     var vol = VOLUMES[vi];
 
