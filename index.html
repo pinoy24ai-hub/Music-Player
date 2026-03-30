@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pinoy Ninja Music</title>
+  <meta name="description" content="Original songs in English, Tagalog, and Cebuano by Pinoy Ninja.">
+  <meta property="og:title"       content="Pinoy Ninja Music">
+  <meta property="og:description" content="Original songs in English, Tagalog, and Cebuano.">
+  <meta property="og:image"       content="og-cover.jpg">
+  <meta property="og:type"        content="website">
+  <meta name="theme-color"        content="#0a1f2e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset & Tokens ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #060f18;
+      --bg-card:      rgba(10, 28, 46, 0.88);
+      --bg-player:    rgba(4, 14, 24, 0.97);
+      --border:       rgba(56, 140, 180, 0.35);
+      --border-soft:  rgba(56, 140, 180, 0.18);
+      --text:         #d4eaf5;
+      --text-muted:   #6ba4c4;
+      --text-light:   #a8d0e8;
+      --accent:       #38c9e8;
+      --accent-soft:  #6ddaf0;
+      --accent-warm:  #f0c060;
+      --accent-sea:   #2ab8a0;
+      --playing-bg:   rgba(8, 36, 56, 0.97);
+      --row-odd:      rgba(10, 28, 46, 0.80);
+      --row-even:     rgba(6, 18, 32, 0.75);
+      --radius:       14px;
+      --radius-sm:    9px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.6);
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ─── Background ───────────────────────────────────────────────── */
+    .bg-photo {
+      position: fixed;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(4, 14, 28, 0.82) 0%,
+        rgba(6, 18, 36, 0.78) 40%,
+        rgba(4, 12, 22, 0.88) 100%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Subtle wave decoration */
+    .bg-wave {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 220px;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Header ───────────────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, rgba(8, 30, 52, 0.94) 0%, rgba(4, 16, 28, 0.94) 100%);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-bottom: 1px solid var(--border);
+      color: #fff;
+      padding: 1.5rem 1.25rem 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-inner { max-width: 800px; margin: 0 auto; }
+
+    .site-name {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .site-name em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(168, 208, 232, 0.75);
+      margin-top: 0.35rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .header-bottom {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.48rem 0.9rem;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .yt-btn:hover {
+      background: var(--accent);
+      color: #04101c;
+    }
+
+    .yt-icon { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
+
+    .v2-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-sea), var(--accent));
+      color: #04101c;
+      padding: 0.25rem 0.6rem;
+      border-radius: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Main Layout ──────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 10rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ─── Volume Browser ───────────────────────────────────────────── */
+    #volumeBrowser { margin-bottom: 1.5rem; }
+
+    .volume-cards-row {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+    }
+
+    .volume-cards-row::-webkit-scrollbar { display: none; }
+
+    .vol-card {
+      flex-shrink: 0;
+      min-width: 118px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius);
+      padding: 0.75rem 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s, box-shadow 0.15s;
+      text-align: left;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.45);
+    }
+
+    .vol-card:hover {
+      border-color: var(--accent);
+      background: rgba(12, 36, 58, 0.92);
+      box-shadow: 0 4px 20px rgba(56,201,232,0.15);
+      transform: translateY(-1px);
+    }
+
+    .vol-card:active { transform: scale(0.97); }
+
+    .vol-card.is-active {
+      border-color: var(--accent);
+      background: rgba(10, 34, 56, 0.94);
+      box-shadow: 0 4px 18px rgba(56,201,232,0.2);
+    }
+
+    .vol-card-emoji { font-size: 1.3rem; margin-bottom: 0.35rem; display: block; }
+
+    .vol-card-name {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .vol-card.is-active .vol-card-name { color: var(--accent); }
+
+    .vol-card-count {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.28rem;
+    }
+
+    /* ─── Active Volume Header ─────────────────────────────────────── */
+    #activeVolHeader {
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+    }
+
+    #activeVolHeader.visible { display: flex; }
+
+    .vol-back-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.2rem;
+      display: flex;
+      align-items: center;
+      border-radius: 50%;
+      transition: color 0.15s, background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .vol-back-btn:hover { color: var(--accent); background: rgba(56,201,232,0.1); }
+
+    .vol-header-info { flex: 1; min-width: 0; }
+    .vol-header-emoji { font-size: 1.1rem; margin-right: 0.35rem; }
+    .vol-header-name { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .vol-header-count { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    .vol-shuffle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: #04101c;
+      border: none;
+      border-radius: 20px;
+      padding: 0.42rem 0.82rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .vol-shuffle-btn:hover { background: var(--accent-soft); }
+
+    /* ─── Filter Row ───────────────────────────────────────────────── */
+    .filter-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 160px;
+      position: relative;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 0.58rem 0.85rem 0.58rem 2.2rem;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 20px;
+      font-size: 0.86rem;
+      font-family: var(--font-body);
+      background: var(--bg-card);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    #searchInput::placeholder { color: var(--text-muted); opacity: 1; }
+    #searchInput:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56,201,232,0.1); }
+
+    .lang-filters {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-pill {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 0.4rem 0.72rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .lang-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(56,201,232,0.07);
+    }
+
+    .lang-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #04101c;
+    }
+
+    /* ─── Shuffle Play Button ──────────────────────────────────────── */
+    .shuffle-play-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-sea), var(--accent));
+      color: #04101c;
+      border: none;
+      border-radius: 24px;
+      padding: 0.62rem 1.15rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      margin-bottom: 1.2rem;
+      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+      box-shadow: 0 2px 16px rgba(56,201,232,0.3);
+    }
+
+    .shuffle-play-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(56,201,232,0.4);
+    }
+
+    .shuffle-play-btn:active { transform: scale(0.97); }
+
+    /* ─── Song List ────────────────────────────────────────────────── */
+    .song-list {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 28px rgba(0,0,0,0.5), 0 1px 0 rgba(56,140,180,0.12);
+      overflow: hidden;
+    }
+
+    .song-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.88rem 1.1rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-soft);
+      transition: background 0.15s, transform 0.1s;
+      user-select: none;
+    }
+
+    .song-item:active { transform: scale(0.99); }
+    .song-item:nth-child(odd)  { background: var(--row-odd); }
+    .song-item:nth-child(even) { background: var(--row-even); }
+    .song-item:last-child { border-bottom: none; }
+    .song-item:hover { background: rgba(14, 44, 72, 0.92); }
+    .song-item.is-playing { background: var(--playing-bg); }
+
+    .song-num {
+      width: 22px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .playing-icon {
+      display: none;
+      width: 26px;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .song-item.is-playing .playing-icon { display: flex; }
+
+    .bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; }
+
+    .bars span {
+      display: block;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: bar-bounce 0.8s ease-in-out infinite alternate;
+    }
+
+    .bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
+    .bars span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+    .bars span:nth-child(3) { height: 9px;  animation-delay: 0.3s; }
+    .bars span:nth-child(4) { height: 14px; animation-delay: 0.1s; }
+
+    @keyframes bar-bounce {
+      from { transform: scaleY(0.35); }
+      to   { transform: scaleY(1); }
+    }
+
+    .song-item.is-paused .bars span { animation-play-state: paused; }
+
+    .song-info { flex: 1; min-width: 0; }
+
+    .song-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-item.is-playing .song-title { color: var(--accent); }
+
+    .song-vol-tag {
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-dur {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+      min-width: 32px;
+      text-align: right;
+    }
+
+    /* ─── Empty State ──────────────────────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* ─── Fixed Player ─────────────────────────────────────────────── */
+    .player-wrap {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    .player {
+      width: 100%;
+      max-width: 800px;
+      background: var(--bg-player);
+      color: var(--text-light);
+      padding: 0.72rem 1.25rem 0.88rem;
+      box-shadow: 0 -4px 32px rgba(0,0,0,0.7), 0 -1px 0 rgba(56,201,232,0.12);
+      border-top: 2px solid var(--accent);
+    }
+
+    .player-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.52rem;
+    }
+
+    .player-track-info { flex: 1; min-width: 0; padding-right: 0.5rem; }
+
+    .player-now-playing {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bg-badge {
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 0.15rem 0.42rem;
+      border-radius: 6px;
+      transition: all 0.25s;
+    }
+
+    .bg-badge.is-live {
+      background: rgba(56,201,232,0.18);
+      color: var(--accent);
+      border: 1px solid rgba(56,201,232,0.35);
+    }
+
+    .bg-badge.is-recovering {
+      background: rgba(240,192,96,0.18);
+      color: var(--accent-warm);
+      border: 1px solid rgba(240,192,96,0.35);
+    }
+
+    .player-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-vol-tag {
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ─── Progress ─────────────────────────────────────────────────── */
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .time-label {
+      font-size: 0.64rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+      min-width: 28px;
+    }
+
+    .time-label.right { text-align: right; }
+
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      overflow: visible;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-sea), var(--accent));
+      border-radius: 4px;
+      width: 0%;
+      pointer-events: none;
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px; height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ─── Controls ─────────────────────────────────────────────────── */
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+
+    .ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: color 0.15s, background 0.15s, transform 0.1s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .ctrl-btn:hover { color: var(--text); background: rgba(56,201,232,0.08); }
+    .ctrl-btn:active { transform: scale(0.9); }
+    .ctrl-btn.is-active { color: var(--accent); }
+    .ctrl-btn.repeat-one { color: var(--accent-warm); }
+
+    .play-btn {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--accent-sea), var(--accent));
+      color: #04101c;
+      border-radius: 50%;
+      box-shadow: 0 2px 16px rgba(56,201,232,0.35);
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    }
+
+    .play-btn:hover { opacity: 0.92; box-shadow: 0 4px 22px rgba(56,201,232,0.45); background: linear-gradient(135deg, var(--accent-sea), var(--accent)); color: #04101c; transform: scale(1.04); }
+    .play-btn:active { transform: scale(0.95); }
+
+    /* Volume */
+    .volume-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .vol-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+      width: 30px;
+      text-align: right;
+    }
+
+    .vol-slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 3px;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(
+        to right,
+        var(--accent) 0%,
+        var(--accent) var(--vol-pct, 80%),
+        rgba(255,255,255,0.1) var(--vol-pct, 80%),
+        rgba(255,255,255,0.1) 100%
+      );
+    }
+
+    .vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      transition: width 0.1s, height 0.1s;
+    }
+
+    .vol-slider:hover::-webkit-slider-thumb { width: 14px; height: 14px; }
+
+    .vol-slider::-moz-range-thumb {
+      width: 11px; height: 11px;
+      border: none;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    /* ─── Footer ───────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem 0.4rem;
+      border-top: 1px solid var(--border-soft);
+      background: rgba(4, 12, 22, 0.8);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Volume Section Headers ───────────────────────────────────── */
+    .vol-section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.48rem 1rem 0.4rem;
+      background: rgba(4, 14, 24, 0.94);
+      border-bottom: 1px solid var(--border-soft);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .vol-section-emoji { font-size: 0.92rem; }
+
+    .vol-section-name {
+      flex: 1;
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+    }
+
+    .vol-section-count {
+      background: rgba(56,201,232,0.12);
+      border-radius: 10px;
+      padding: 0.1rem 0.48rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ─── Version Toggle ───────────────────────────────────────────── */
+    .version-toggle {
+      flex-shrink: 0;
+      background: rgba(56,201,232,0.08);
+      border: 1px solid rgba(56,201,232,0.22);
+      border-radius: 10px;
+      color: var(--accent);
+      font-size: 0.63rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      padding: 0.2rem 0.52rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+      margin-right: 0.3rem;
+    }
+
+    .version-toggle:hover {
+      background: rgba(56,201,232,0.18);
+      border-color: var(--accent);
+    }
+
+    /* ─── Variant Items ────────────────────────────────────────────── */
+    .variant-item {
+      background: rgba(4, 16, 28, 0.92) !important;
+      border-left: 2px solid rgba(56,201,232,0.22);
+    }
+
+    .variant-item:hover { background: rgba(10, 28, 46, 0.94) !important; }
+
+    .variant-indent {
+      color: var(--accent) !important;
+      opacity: 0.5;
+      font-size: 0.85rem !important;
+    }
+
+    .variant-item .song-title {
+      font-size: 0.84rem;
+      color: var(--text-light);
+    }
+
+    .variant-item.is-playing .song-title { color: var(--accent); }
+
+    /* ─── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 520px) {
+      .site-name { font-size: 1.5rem; }
+      .song-item { padding: 0.78rem 0.85rem; gap: 0.62rem; }
+      .player { padding: 0.68rem 0.9rem 0.82rem; }
+      .controls-row { gap: 1.2rem; }
+      .vol-card { min-width: 104px; }
+      .lang-pill { padding: 0.36rem 0.62rem; font-size: 0.73rem; }
+    }
+
+    @media (max-width: 380px) {
+      .controls-row { gap: 0.9rem; }
+      .play-btn { width: 44px; height: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-photo" aria-hidden="true"></div>
+<div class="bg-overlay" aria-hidden="true"></div>
+
+<!-- Wave decoration -->
+<div class="bg-wave" aria-hidden="true">
+  <svg viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,100 C200,160 400,40 600,100 C800,160 1000,40 1200,100 C1300,130 1380,90 1440,100 L1440,220 L0,220 Z" fill="#38c9e8"/>
+    <path d="M0,140 C240,80 480,180 720,140 C960,100 1200,180 1440,140 L1440,220 L0,220 Z" fill="#2ab8a0" opacity="0.6"/>
+  </svg>
+</div>
+
+<!-- =============== HEADER =============== -->
+<header>
+  <div class="header-inner">
+    <h1 class="site-name">Pinoy <em>Ninja</em> Music</h1>
+    <p class="tagline">Original songs in English &middot; Tagalog &middot; Cebuano</p>
+    <div class="header-bottom">
+      <a class="yt-btn" href="https://www.youtube.com/playlist?list=PLYEqiiu-5XDtcY6MRYf3YgoZHgD2FDfV7" target="_blank" rel="noopener noreferrer">
+        <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch on YouTube
+      </a>
+      <span class="v2-badge">v2.0 &middot; Cloudflare</span>
+    </div>
+  </div>
+</header>
+
+<!-- =============== MAIN =============== -->
+<main>
+
+  <!-- Volume Browser -->
+  <section id="volumeBrowser">
+    <p class="section-label">Browse Volumes</p>
+    <div class="volume-cards-row" id="volumeCardsRow"></div>
+  </section>
+
+  <!-- Active Volume Header -->
+  <div id="activeVolHeader">
+    <button class="vol-back-btn" id="volBackBtn" aria-label="Back to all songs">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    </button>
+    <div class="vol-header-info">
+      <div><span class="vol-header-emoji" id="volHeaderEmoji"></span><span class="vol-header-name" id="volHeaderName"></span></div>
+      <div class="vol-header-count" id="volHeaderCount"></div>
+    </div>
+    <button class="vol-shuffle-btn" id="volShuffleBtn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.41-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+      Shuffle Volume
+    </button>
+  </div>
+
+  <!-- Filter Row -->
+  <div class="filter-row">
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input id="searchInput" type="search" placeholder="Search songs…" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="lang-filters">
+      <button class="lang-pill active" data-lang="all">All</button>
+      <button class="lang-pill" data-lang="tl">Tagalog</button>
+      <button class="lang-pill" data-lang="ceb">Cebuano</button>
+      <button class="lang-pill" data-lang="en">English</button>
+    </div>
+  </div>
+
+  <!-- Shuffle Play All -->
+  <button class="shuffle-play-btn" id="shufflePlayBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.41-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+    Shuffle Play All
+  </button>
+
+  <!-- Song List -->
+  <div class="song-list" id="songList"></div>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  Pinoy Ninja &middot; All original songs &middot; v2.0
+</footer>
+
+<!-- Fixed Player -->
+<div class="player-wrap">
+  <div class="player">
+    <div class="player-top-row">
+      <div class="player-track-info">
+        <div class="player-now-playing">
+          NOW PLAYING
+          <span class="bg-badge" id="bgBadge"></span>
+        </div>
+        <div class="player-title" id="playerTitle">Select a song to play</div>
+        <div class="player-vol-tag" id="playerVolTag"></div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <span class="time-label" id="currentTime">0:00</span>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="time-label right" id="totalTime">0:00</span>
+    </div>
+
+    <div class="controls-row">
+      <button class="ctrl-btn" id="shuffleBtn" title="Shuffle: off" aria-label="Toggle shuffle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.41-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+      </button>
+      <button class="ctrl-btn" id="prevBtn" aria-label="Previous track">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+      </button>
+      <button class="ctrl-btn play-btn" id="playBtn" aria-label="Play / Pause">
+        <svg id="iconPlay" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="iconPause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
+      </button>
+      <button class="ctrl-btn" id="nextBtn" aria-label="Next track">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm2.5-6 5.5 3.9V8.1L8.5 12zM16 6h2v12h-2z"/></svg>
+      </button>
+      <button class="ctrl-btn" id="repeatBtn" title="Repeat: off" aria-label="Toggle repeat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+      </button>
+    </div>
+
+    <div class="volume-row">
+      <button class="ctrl-btn" id="muteBtn" aria-label="Mute / Unmute">
+        <svg id="iconVolHigh" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        <svg id="iconVolLow"  width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/></svg>
+        <svg id="iconVolMute" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+      </button>
+      <input class="vol-slider" id="volSlider" type="range" min="0" max="100" value="80">
+      <span class="vol-label" id="volLabel">80%</span>
+    </div>
+  </div>
+</div>
+
+<!-- DOM audio element -->
+<audio id="audioPlayer" preload="auto" playsinline x-webkit-airplay="allow"
+       style="position:absolute;width:0;height:0;opacity:0;pointer-events:none"></audio>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(reg) { console.log('SW registered:', reg.scope); })
+        .catch(function(err) { console.warn('SW registration failed:', err); });
+    });
+  }
+</script>
+
+<!-- =============== SCRIPT =============== -->
+<script>
+/* ----------------------------------------------------------------
+ * CLOUDFLARE R2 BASE URL
+ * All audio files are served from Cloudflare R2 via this base URL.
+ * Update this once your R2 bucket and custom domain are configured.
+ * ---------------------------------------------------------------- */
+var R2_BASE = 'https://pub-04e27ffa40fa4210bd1d3b85d2c86804.r2.dev/';
+
+function r2(filename) {
+  return R2_BASE + encodeURIComponent(filename);
+}
+
+/* ----------------------------------------------------------------
+ * VOLUMES & SONGS DATA
+ * ---------------------------------------------------------------- */
+var VOLUMES = [
+  { name: 'Cha-Cha & Disco',  emoji: '🎉', desc: 'Cha-cha, disco & bachata remixes' },
+  { name: 'Dance Floor',       emoji: '💃', desc: 'Move your body, feel the beat'    },
+  { name: 'Chill & Bossa',    emoji: '🌊', desc: 'Mellow, bossa nova & slow grooves' },
+  { name: 'Romantic Ballads', emoji: '💖', desc: 'Classic Tagalog love songs'         },
+  { name: 'Heart & Soul',     emoji: '🕯️', desc: 'Deep emotion, longing & memory'    },
+  { name: 'Devotion',         emoji: '🙏', desc: 'Together, forever, unwavering'      },
+  { name: 'English Love',     emoji: '✨', desc: 'English romantic anthems'           },
+  { name: 'English Soul',     emoji: '🌙', desc: 'Introspective English stories'      },
+  { name: 'Good Times',       emoji: '😊', desc: 'Light, fun & feel-good'             },
+  { name: 'Sundries',         emoji: '🗂️', desc: 'Songs that don\'t fit neatly elsewhere' },
+];
+
+var SONGS = [
+  // ── Vol 0: Cha-Cha & Disco ─────────────────────────────────────
+  { title: "Asim Cha-Cha",                      file: "Asim Cha-Cha.mp3",                       lang: 'tl',  volIdx: 0 },
+  { title: "Aslom Cha-Cha",                     file: "Aslom Cha-Cha.mp3",                      lang: 'ceb', volIdx: 0 },
+  { title: "Batchata Queen",                    file: "Batchata Queen.mp3",                     lang: 'en',  volIdx: 0 },
+  { title: "Cha-Cha Queen",                     file: "Cha-Cha Queen.mp3",                      lang: 'en',  volIdx: 0 },
+  { title: "Hataw, Galaw",                      file: "Hataw, Galaw.mp3",          duration: "3:30", lang: 'tl', volIdx: 0 },
+  { title: "Ikaw Ang Lahat Sa Akin",            file: "Ikaw Ang Lahat Sa Akin (Cha-Cha).mp3",   lang: 'tl',  volIdx: 0 },
+  { title: "Ikaw Ang Lahat Sa Akin (Disco)",    file: "Ikaw Ang Lahat Sa Akin (Disco).mp3",     lang: 'tl',  volIdx: 0 },
+  { title: "Just You And Me (70s Disco)",       file: "Just You And Me (70s Disco).mp3",        lang: 'en',  volIdx: 0 },
+  { title: "Just You And Me (Bachata)",         file: "Just You And Me (Bachata).mp3",          lang: 'en',  volIdx: 0 },
+  { title: "Kahit Kulang Ang Money (Cha-Cha)",  file: "Kahit Kulang Ang Money (Cha-Cha).mp3",   lang: 'tl',  volIdx: 0 },
+  { title: "Kahit Saan Pa Mapunta (Disco)",     file: "Kahit Saan Pa Mapunta  (Disco).mp3",     lang: 'tl',  volIdx: 0 },
+  { title: "Ngayon (Disco)",                    file: "Ngayon (Disco).mp3",                     lang: 'tl',  volIdx: 0 },
+  { title: "Sa Lahat Ng Taon",                  file: "Sa Lahat Ng Taon (Cha-Cha).mp3",         lang: 'tl',  volIdx: 0 },
+  { title: "Sa Lahat Ng Taon (Funk Disco)",     file: "Sa Lahat Ng Taon (Funk Disco).mp3",      lang: 'tl',  volIdx: 0 },
+  { title: "Sumasayaw Sa Alon (Disco)",         file: "Sumasayaw Sa Alon (Disco).mp3",          lang: 'tl',  volIdx: 0 },
+  { title: "Tara Na Sa Dagat",                  file: "Tara Na Sa Dagat.mp3",                   lang: 'tl',  volIdx: 0 },
+  { title: "Tara Na Sa Dagat (Bachata)",        file: "Tara Na Sa Dagat (Bachata).mp3",         lang: 'tl',  volIdx: 0 },
+  { title: "Hantungan (Manila Sound)",          file: "Hantungan (Manila Sound).mp3",           lang: 'tl',  volIdx: 0 },
+
+  // ── Vol 1: Dance Floor ─────────────────────────────────────────
+  { title: "Dance Partner",                     file: "Dance Partner.mp3",                      lang: 'en',  volIdx: 1 },
+  { title: "Dance Some More",                   file: "Dance Some More.mp3",                    lang: 'en',  volIdx: 1 },
+  { title: "Dancing Through The Years",         file: "Dancing Through The Years.mp3",          lang: 'en',  volIdx: 1 },
+  { title: "Dancing With The Tide",             file: "Dancing With The Tide.mp3",              lang: 'en',  volIdx: 1 },
+  { title: "Kasayaw Ko Habang-Buhay",           file: "Kasayaw Ko Habang-Buhay.mp3", duration: "3:30", lang: 'tl', volIdx: 1 },
+  { title: "Sayaw ng Puso",                     file: "Sayaw ng Puso.mp3",          duration: "3:36", lang: 'tl', volIdx: 1 },
+  { title: "Sayaw Ng Puso (Funk-Pop)",          file: "Sayaw Ng Puso (Funk-Pop).mp3",           lang: 'tl',  volIdx: 1 },
+  { title: "Sayaw Pa Tayo",                     file: "Sayaw Pa Tayo.mp3",          duration: "3:30", lang: 'tl', volIdx: 1 },
+  { title: "Sumasayaw sa Alon",                 file: "Sumasayaw sa Alon.mp3",                  lang: 'tl',  volIdx: 1 },
+  { title: "We Keep Dancing (Bachata 2)",       file: "We Keep Dancing (Bachata 2).mp3",        lang: 'en',  volIdx: 1 },
+  { title: "We Keep Dancing (Batchata)",        file: "We Keep Dancing (Batchata).mp3",         lang: 'en',  volIdx: 1 },
+  { title: "We Keep Dancing",                   file: "We Keep Dancing (Cha-Cha).mp3",          lang: 'en',  volIdx: 1 },
+
+  // ── Vol 2: Chill & Bossa ───────────────────────────────────────
+  { title: "Beneath the Silver Moon",           file: "Beneath the Silver Moon.mp3",            lang: 'en',  volIdx: 2 },
+  { title: "Beneath the Silver Moon (Chill)",   file: "Beneath the Silver Moon (Chill).mp3",    lang: 'en',  volIdx: 2 },
+  { title: "Beneath the Silver Moon (Chill2)",  file: "Beneath the Silver Moon (Chill2).mp3",   lang: 'en',  volIdx: 2 },
+  { title: "Drifting",                          file: "Drifting.mp3",                           lang: 'en',  volIdx: 2 },
+  { title: "Drifting (Chill)",                  file: "Drifting (Chill).mp3",                   lang: 'en',  volIdx: 2 },
+  { title: "Golden Hour Horizon",               file: "Golden Hour Horizon.mp3",                lang: 'en',  volIdx: 2 },
+  { title: "Golden Hour Horizon (Bossa)",       file: "Golden Hour Horizon (Bossa).mp3",        lang: 'en',  volIdx: 2 },
+  { title: "Isang Sulyap",                      file: "Isang Sulyap.mp3",                       lang: 'tl',  volIdx: 2 },
+  { title: "Isang Sulyap (Bossa)",              file: "Isang Sulyap (Bossa).mp3",               lang: 'tl',  volIdx: 2 },
+  { title: "Ocean",                             file: "Ocean.mp3",                  duration: "3:30", lang: 'en', volIdx: 2 },
+  { title: "Ocean (Chill)",                     file: "Ocean (Chill).mp3",                      lang: 'en',  volIdx: 2 },
+  { title: "Sa Lahat Ng Taon (Bossa)",          file: "Sa Lahat Ng Taon (Bossa).mp3",           lang: 'tl',  volIdx: 2 },
+  { title: "Sailing",                           file: "Sailing.mp3",                            lang: 'en',  volIdx: 2 },
+  { title: "Sailing (Bossa)",                   file: "Sailing (Bossa).mp3",                    lang: 'en',  volIdx: 2 },
+  { title: "Same Horizon",                      file: "Same Horizon.mp3",                       lang: 'en',  volIdx: 2 },
+  { title: "Same Horizon (Line)",               file: "Same Horizon Line.mp3",                  lang: 'en',  volIdx: 2 },
+  { title: "Slow Time",                         file: "Slow  Time.mp3",             duration: "3:30", lang: 'en', volIdx: 2 },
+  { title: "Slow Time (Chill)",                 file: "Slow Time (Chill).mp3",                  lang: 'en',  volIdx: 2 },
+  { title: "Still Shining",                     file: "Still Shining.mp3",                      lang: 'en',  volIdx: 2 },
+  { title: "Still Shining (Chill)",             file: "Still Shining (Chill).mp3",              lang: 'en',  volIdx: 2 },
+  { title: "Warmth We Carry",                   file: "Warmth We Carry.mp3",                    lang: 'en',  volIdx: 2 },
+  { title: "Warmth We Carry (Bossa)",           file: "Warmth We Carry (Bossa).mp3",            lang: 'en',  volIdx: 2 },
+  { title: "Balas Ug Hangin",                   file: "Balas Ug Hangin.mp3",                    lang: 'ceb', volIdx: 2 },
+  { title: "Hindi Ka Nag-Iisa",                 file: "Hindi Ka Nag-Iisa.mp3",                  lang: 'tl',  volIdx: 2 },
+  { title: "Kasama Mo Ako",                     file: "Kasama Mo Ako.mp3",                      lang: 'tl',  volIdx: 2 },
+  { title: "Through Every Trial",               file: "Through Every Trial.mp3",                lang: 'en',  volIdx: 2 },
+  { title: "Pahulayan",                         file: "Pahulayan.mp3",              duration: "3:30", lang: 'ceb', volIdx: 2 },
+
+  // ── Vol 3: Romantic Ballads ────────────────────────────────────
+  { title: "Aking Hantungan",                   file: "Aking Hantungan.mp3",        duration: "4:10", lang: 'tl', volIdx: 3 },
+  { title: "Daloy ng Pag-Ibig",                 file: "Daloy ng Pag-Ibig.mp3",                  lang: 'tl',  volIdx: 3 },
+  { title: "Dito Ka Sa Akin",                   file: "Dito Ka Sa AKin.mp3",        duration: "3:30", lang: 'tl', volIdx: 3 },
+  { title: "Hanggang sa Huli",                  file: "Hanggang sa Huli.mp3",       duration: "3:16", lang: 'tl', volIdx: 3 },
+  { title: "Hanggang Sa Huli (Ballad)",         file: "Hanggang Sa Huli (Ballad).mp3",          lang: 'tl',  volIdx: 3 },
+  { title: "Hanggang Sa Huli (Duet)",           file: "Hanggang Sa Huli (Duet).mp3",            lang: 'tl',  volIdx: 3 },
+  { title: "Hanggang Sa Huli (R&B)",            file: "Hanggang Sa Huli (R&B).mp3",             lang: 'tl',  volIdx: 3 },
+  { title: "Hanggang Sa Huli (R&B Ver2)",       file: "Hanggang Sa Huli (R&B Ver2).mp3",        lang: 'tl',  volIdx: 3 },
+  { title: "Hawakan Ang Ngayon",                file: "Hawakan Ang Ngayon.mp3",     duration: "3:30", lang: 'tl', volIdx: 3 },
+  { title: "Iisang Guhit",                      file: "Iisang Guhit.mp3",                       lang: 'tl',  volIdx: 3 },
+  { title: "Ikaw ang Alon",                     file: "Ikaw ang Alon.mp3",          duration: "3:32", lang: 'tl', volIdx: 3 },
+  { title: "Ikaw Ang Alon (Soul, R&B)",         file: "Ikaw Ang Alon (Soul, R&B).mp3",          lang: 'tl',  volIdx: 3 },
+  { title: "Ikaw Ang Lahat Sa Akin",            file: "Ikaw Ang Lahat Sa Akin.mp3",             lang: 'tl',  volIdx: 3 },
+  { title: "Ikaw Ang Tahanan",                  file: "Ikaw Ang Tahanan.mp3",       duration: "2:16", lang: 'tl', volIdx: 3 },
+  { title: "Ikaw Ang Umaga",                    file: "Ikaw Ang Umaga.mp3",                     lang: 'tl',  volIdx: 3 },
+  { title: "Ikaw Pa Rin",                       file: "Ikaw Pa Rin.mp3",            duration: "3:30", lang: 'tl', volIdx: 3 },
+  { title: "Ikaw Pa Rin (Pop)",                 file: "Ikaw Pa Rin (Pop).mp3",                  lang: 'tl',  volIdx: 3 },
+  { title: "Ikaw Pa Rin (Pop Ver2)",            file: "Ikaw Pa Rin (Pop Ver2).mp3",             lang: 'tl',  volIdx: 3 },
+  { title: "Kislap sa Dilim",                   file: "Kislap sa Dilim.mp3",                    lang: 'tl',  volIdx: 3 },
+  { title: "Himig Ng Ating Kahapon",            file: "Himig Ng Ating Kahapon (Pop).mp3",       lang: 'tl',  volIdx: 3 },
+  { title: "Himig Ng Ating Kahapon (Pop Ver2)", file: "Himig Ng Ating Kahapon (Pop Ver2).mp3",  lang: 'tl',  volIdx: 3 },
+  { title: "Tahanan",                           file: "Tahanan.mp3",                            lang: 'tl',  volIdx: 3 },
+  { title: "Tahanan (Ver 2)",                   file: "Tahanan (Ver 2).mp3",                    lang: 'tl',  volIdx: 3 },
+  { title: "Tahanan (R&B Funky)",               file: "Tahanan (R&B Funky).mp3",                lang: 'tl',  volIdx: 3 },
+  { title: "Tahanan (R&B Funky Ver2)",          file: "Tahanan (R&B Funky Ver2).mp3",           lang: 'tl',  volIdx: 3 },
+
+  // ── Vol 4: Heart & Soul ────────────────────────────────────────
+  { title: "Ania Ako",                          file: "Ania Ako.mp3",                           lang: 'ceb', volIdx: 4 },
+  { title: "Ania Ako (R&B)",                    file: "Ania Ako (R&B).mp3",                     lang: 'ceb', volIdx: 4 },
+  { title: "Ania Ako (Soul)",                   file: "Ania Ako (Soul).mp3",                    lang: 'ceb', volIdx: 4 },
+  { title: "Dagat at Baybayin",                 file: "Dagat at Baybayin.mp3",                  lang: 'tl',  volIdx: 4 },
+  { title: "Dagat at Baybayin (Male)",          file: "Dagat at Baybayin (Male).mp3",           lang: 'tl',  volIdx: 4 },
+  { title: "Hindi Ka Dead Star",                file: "Hindi Ka Dead Star.mp3",     duration: "3:30", lang: 'tl', volIdx: 4 },
+  { title: "Ibang Daan",                        file: "Ibang Daan.mp3",             duration: "3:39", lang: 'tl', volIdx: 4 },
+  { title: "Isang Linggo Lang",                 file: "Isang Linggo Lang.mp3",      duration: "3:58", lang: 'tl', volIdx: 4 },
+  { title: "Isang Linggo Lang (Pop)",           file: "Isang Linggo (Pop).mp3",                 lang: 'tl',  volIdx: 4 },
+  { title: "Isang Linggo Lang (Pop Ver2)",      file: "Isang Linggo (Pop Ver2).mp3",            lang: 'tl',  volIdx: 4 },
+  { title: "Kahit Saan Pa Mapunta",             file: "Kahit Saan Pa Mapunta.mp3",              lang: 'tl',  volIdx: 4 },
+  { title: "Kahit Ulan O Araw",                 file: "Kahit Ulan O Araw.mp3",                  lang: 'tl',  volIdx: 4 },
+  { title: "Liyab sa Dilim",                    file: "Liyab sa Dilim.mp3",                     lang: 'tl',  volIdx: 4 },
+  { title: "Magkasama",                         file: "Magkasama.mp3",                          lang: 'tl',  volIdx: 4 },
+  { title: "Magkasama (R&B-Pop)",               file: "Magkasama (R&B-Pop).mp3",                lang: 'tl',  volIdx: 4 },
+  { title: "Magkasama (Tayo Lagi)",             file: "Magkasama Tayo Lagi.mp3",                lang: 'tl',  volIdx: 4 },
+  { title: "Mahalaga Nandito Ka",               file: "Mahalaga Nandito Ka.mp3",    duration: "3:55", lang: 'tl', volIdx: 4 },
+  { title: "Muli",                              file: "Muli.mp3",                   duration: "3:30", lang: 'tl', volIdx: 4 },
+  { title: "Nagbabalik",                        file: "Nagbabalik.mp3",                         lang: 'tl',  volIdx: 4 },
+  { title: "Himig Ng Kahapon (R&B Funky)",      file: "Himig Ng Kahapon (R&B Funky).mp3",       lang: 'tl',  volIdx: 4 },
+
+  // ── Vol 5: Devotion ────────────────────────────────────────────
+  { title: "Habang Tumatagal",                  file: "Habang Tumatagal.mp3",       duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Ito Tayo",                          file: "Ito Tayo.mp3",                           lang: 'tl',  volIdx: 5 },
+  { title: "Kanlungan",                         file: "Kanlungan.mp3",              duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Kung Nandito Ka Sana",              file: "Kung Nandito Ka Sana.mp3",   duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Muling Humihinga",                  file: "Muling Humihinga.mp3",                   lang: 'tl',  volIdx: 5 },
+  { title: "Nanatiling Bakas",                  file: "Nanatiling Bakas.mp3",       duration: "3:43", lang: 'tl', volIdx: 5 },
+  { title: "Nandito Ako",                       file: "Nandito Ako.mp3",                        lang: 'tl',  volIdx: 5 },
+  { title: "Nandito Ako (Nu-Jazz)",             file: "Nandito Ako (Nu-Jazz).mp3",              lang: 'tl',  volIdx: 5 },
+  { title: "Sa Dilim, Ikaw at Ako",             file: "Sa Dilim, Ikaw at Ako.mp3",  duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Sa Ilalim ng Payong",               file: "Sa Ilalim ng Payong.mp3",    duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Sa Maulang Biyahe",                 file: "Sa Maulang Biyahe.mp3",                  lang: 'tl',  volIdx: 5 },
+  { title: "Sa Lahat Ng Taon",                  file: "Sa Lahat Ng Taon.mp3",                   lang: 'tl',  volIdx: 5 },
+  { title: "Sa Tabing Dagat",                   file: "Sa Tabing Dagat.mp3",        duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Sa Yakap Mo",                       file: "Sa Yakap Mo.mp3",            duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Sapat Na",                          file: "Sapat Na.mp3",                           lang: 'tl',  volIdx: 5 },
+  { title: "Tadhana",                           file: "Tadhana.mp3",                duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Tadhana (Male)",                    file: "Tadhana (Male).mp3",                     lang: 'tl',  volIdx: 5 },
+  { title: "Tanging Yaman",                     file: "Tanging Yaman.mp3",          duration: "3:30", lang: 'tl', volIdx: 5 },
+
+  // ── Vol 6: English Love ────────────────────────────────────────
+  { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 6 },
+  { title: "Always (UK House)",                 file: "Always (UK House).mp3",                  lang: 'en',  volIdx: 6 },
+  { title: "Always You",                        file: "Always You.mp3",                         lang: 'en',  volIdx: 6 },
+  { title: "Because of You",                    file: "Because of You.mp3",                     lang: 'en',  volIdx: 6 },
+  { title: "Between Us",                        file: "Between Us.mp3",                         lang: 'en',  volIdx: 6 },
+  { title: "Coming Back to You",                file: "Coming Back to You.mp3",                 lang: 'en',  volIdx: 6 },
+  { title: "Every Season (Pop-Soul)",           file: "Every Season (Pop-Soul).mp3",            lang: 'en',  volIdx: 6 },
+  { title: "Forever You",                       file: "Forever You.mp3",                        lang: 'en',  volIdx: 6 },
+  { title: "I Am Yours",                        file: "I Am Yours.mp3",                         lang: 'en',  volIdx: 6 },
+  { title: "I Found You Again",                 file: "I Found You Again.mp3",                  lang: 'en',  volIdx: 6 },
+  { title: "I Love You More",                   file: "I Love You More.mp3",                    lang: 'en',  volIdx: 6 },
+  { title: "I'll Hold The Line",                file: "I'll Hold The Line.mp3",     duration: "3:30", lang: 'en', volIdx: 6 },
+  { title: "I'm Gonna Love You",                file: "I'm Gonna Love You.mp3",                 lang: 'en',  volIdx: 6 },
+  { title: "In Your Embrace",                   file: "In Your Embrace.mp3",                    lang: 'en',  volIdx: 6 },
+  { title: "Intertwined",                       file: "Intertwined.mp3",                        lang: 'en',  volIdx: 6 },
+  { title: "It's You",                          file: "It's You.mp3",               duration: "3:30", lang: 'en', volIdx: 6 },
+  { title: "Just Stay With Me",                 file: "Just Stay With Me.mp3",                  lang: 'en',  volIdx: 6 },
+  { title: "Now Intertwined",                   file: "Now Intertwined.mp3",                    lang: 'en',  volIdx: 6 },
+  { title: "Together, Always",                  file: "Together, Always.mp3",                   lang: 'en',  volIdx: 6 },
+
+  // ── Vol 7: English Soul ────────────────────────────────────────
+  { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 7 },
+  { title: "Dead Star",                         file: "Dead Star.mp3",                          lang: 'en',  volIdx: 7 },
+  { title: "Flames",                            file: "Flames.mp3",                             lang: 'en',  volIdx: 7 },
+  { title: "Flames (in the Dark Room)",         file: "Flames in the Dark Room.mp3",            lang: 'en',  volIdx: 7 },
+  { title: "Home",                              file: "Home.mp3",                               lang: 'en',  volIdx: 7 },
+  { title: "Maybe Happy Ending",                file: "Maybe Happy Ending.mp3",                 lang: 'en',  volIdx: 7 },
+  { title: "My Safe Place",                     file: "My Safe Place.mp3",                      lang: 'en',  volIdx: 7 },
+  { title: "Not So Bad Afterall",               file: "Not So Bad Afterall.mp3",                lang: 'en',  volIdx: 7 },
+  { title: "Not So Bad Afterall (Indie)",       file: "Not So Bad Afterall (Indie).mp3",        lang: 'en',  volIdx: 7 },
+  { title: "Old and Gray",                      file: "Old and Gray.mp3",                       lang: 'en',  volIdx: 7 },
+  { title: "Sanctuary",                         file: "Sanctuary.mp3",              duration: "3:30", lang: 'en', volIdx: 7 },
+  { title: "The Echo",                          file: "The Echo.mp3",                           lang: 'en',  volIdx: 7 },
+  { title: "The Rhythm of the Dark",            file: "The Rhythm of the Dark.mp3", duration: "3:30", lang: 'en', volIdx: 7 },
+  { title: "The World You Chose",               file: "The World You Chose.mp3",    duration: "3:30", lang: 'en', volIdx: 7 },
+  { title: "This Is Us",                        file: "This Is Us.mp3",                         lang: 'en',  volIdx: 7 },
+
+  // ── Vol 8: Good Times ──────────────────────────────────────────
+  { title: "Baka Ang Happy Ending",             file: "Baka Ang Happy Ending.mp3",              lang: 'tl',  volIdx: 8 },
+  { title: "Baka Ang Saya",                     file: "Baka Ang Saya.mp3",                      lang: 'tl',  volIdx: 8 },
+  { title: "Domestic Hustle",                   file: "Domestic Hustle.mp3",                    lang: 'en',  volIdx: 8 },
+  { title: "Finally Home",                      file: "Finally Home.mp3",                       lang: 'en',  volIdx: 8 },
+  { title: "Just You And Me",                   file: "Just You And Me.mp3",                    lang: 'en',  volIdx: 8 },
+  { title: "My Grumpy, Old Honey",              file: "My Grumpy, Old Honey.mp3",               lang: 'en',  volIdx: 8 },
+  { title: "Staycation Lang",                   file: "Staycation Lang.mp3",                    lang: 'tl',  volIdx: 8 },
+  { title: "Staycation (R&B Funky)",            file: "Staycation (R&B Funky).mp3",             lang: 'tl',  volIdx: 8 },
+  { title: "Thank You, My Love",                file: "Thank You, My Love.mp3",                 lang: 'en',  volIdx: 8 },
+  { title: "Thank You, My Love (Retro-Soul)",   file: "Thank You, My Love (Retro-Soul).mp3",    lang: 'en',  volIdx: 8 },
+  { title: "This Time We're Staying",           file: "This Time We're Staying.mp3",            lang: 'en',  volIdx: 8 },
+  { title: "Under This Umbrella",               file: "Under This Umbrella.mp3",                lang: 'en',  volIdx: 8 },
+  { title: "You Are My Everything",             file: "You Are My Everything.mp3",              lang: 'en',  volIdx: 8 },
+
+  // ── Vol 9: Sundries ────────────────────────────────────────────
+  { title: "Barkada",                           file: "Barkada.mp3",                            lang: 'tl',  volIdx: 9 },
+  { title: "Barkada (Ver 2)",                   file: "Barkada (Ver 2).mp3",                    lang: 'tl',  volIdx: 9 },
+  { title: "Panay Panalangin",                  file: "Panay Panalangin.mp3",                   lang: 'tl',  volIdx: 9 },
+  { title: "Steady Ascent",                     file: "Steady Ascent.mp3",                      lang: 'en',  volIdx: 9 },
+  { title: "Trading Ice for Rain",              file: "Trading Ice for Rain.mp3",               lang: 'en',  volIdx: 9 },
+  { title: "Trading Ice for Rain (R&B)",        file: "Trading Ice for Rain (R&B).mp3",         lang: 'en',  volIdx: 9 },
+  { title: "Where The Balay Is",                file: "Where The Balay Is.mp3",                 lang: 'ceb', volIdx: 9 },
+];
+
+/* ─── State ───────────────────────────────────────────────────────── */
+var audio         = document.getElementById('audioPlayer');
+var _audioCtx     = null;
+var currentIdx    = -1;
+var preloadAudio  = new Audio();
+var preloadAudio2 = new Audio();
+var isPlaying            = false;
+var userPaused           = false;
+var wasPlayingWhenHidden = false;
+var pendingPlay          = false;
+var shuffleOn      = false;
+var shuffleQueue   = [];
+var repeatMode     = 0;
+var lastVolume     = 80;
+var trackChanging  = false;
+var activeVolume   = -1;
+var activeLang     = 'all';
+var expandedGroups = {};
+var _wakeLock      = null;
+
+/* ─── AudioContext ────────────────────────────────────────────────── */
+function ensureAudioContext() {
+  if (_audioCtx) return;
+  try {
+    _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (_audioCtx.state === 'suspended') _audioCtx.resume();
+    try {
+      var silentBuf = _audioCtx.createBuffer(1, _audioCtx.sampleRate, _audioCtx.sampleRate);
+      var silentSrc = _audioCtx.createBufferSource();
+      silentSrc.buffer = silentBuf;
+      silentSrc.loop   = true;
+      var silentGain   = _audioCtx.createGain();
+      silentGain.gain.value = 0.001;
+      silentSrc.connect(silentGain);
+      silentGain.connect(_audioCtx.destination);
+      silentSrc.start(0);
+    } catch(se) { console.warn('Silent loop failed:', se); }
+    setTimeout(function() {
+      if (currentIdx >= 0) updateMediaSession(SONGS[currentIdx]);
+    }, 300);
+  } catch(e) { console.warn('AudioContext setup failed:', e); }
+}
+document.addEventListener('click', ensureAudioContext, { once: true });
+
+/* ─── DOM refs ────────────────────────────────────────────────────── */
+var playBtn        = document.getElementById('playBtn');
+var prevBtn        = document.getElementById('prevBtn');
+var nextBtn        = document.getElementById('nextBtn');
+var shuffleBtn     = document.getElementById('shuffleBtn');
+var repeatBtn      = document.getElementById('repeatBtn');
+var muteBtn        = document.getElementById('muteBtn');
+var volSlider      = document.getElementById('volSlider');
+var volLabel       = document.getElementById('volLabel');
+var progressBar    = document.getElementById('progressBar');
+var progressFill   = document.getElementById('progressFill');
+var currentTimeEl  = document.getElementById('currentTime');
+var totalTimeEl    = document.getElementById('totalTime');
+var songListEl     = document.getElementById('songList');
+var playerTitle    = document.getElementById('playerTitle');
+var playerVolTag   = document.getElementById('playerVolTag');
+var iconPlay       = document.getElementById('iconPlay');
+var iconPause      = document.getElementById('iconPause');
+var iconVolHigh    = document.getElementById('iconVolHigh');
+var iconVolLow     = document.getElementById('iconVolLow');
+var iconVolMute    = document.getElementById('iconVolMute');
+var searchInput    = document.getElementById('searchInput');
+var bgBadge        = document.getElementById('bgBadge');
+var shufflePlayBtn = document.getElementById('shufflePlayBtn');
+var volBackBtn     = document.getElementById('volBackBtn');
+var volShuffleBtn  = document.getElementById('volShuffleBtn');
+var activeVolHeader = document.getElementById('activeVolHeader');
+var volHeaderEmoji = document.getElementById('volHeaderEmoji');
+var volHeaderName  = document.getElementById('volHeaderName');
+var volHeaderCount = document.getElementById('volHeaderCount');
+var volumeCardsRow = document.getElementById('volumeCardsRow');
+
+/* ─── Helpers ─────────────────────────────────────────────────────── */
+function fmtTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  var m = Math.floor(s / 60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function safePlay(el) {
+  var p = el.play();
+  return (p && typeof p.then === 'function') ? p : Promise.resolve();
+}
+
+function getPoolIndices() {
+  return SONGS.reduce(function(acc, s, i) {
+    var volOk  = (activeVolume < 0 || s.volIdx === activeVolume);
+    var langOk = (activeLang === 'all' || s.lang === activeLang);
+    var q      = searchInput.value.trim().toLowerCase();
+    var srchOk = !q || s.title.toLowerCase().includes(q) ||
+                 (VOLUMES[s.volIdx] && VOLUMES[s.volIdx].name.toLowerCase().includes(q));
+    if (volOk && langOk && srchOk) acc.push(i);
+    return acc;
+  }, []);
+}
+
+/* ─── Volume Cards ────────────────────────────────────────────────── */
+function buildVolumeCards() {
+  volumeCardsRow.innerHTML = '';
+  VOLUMES.forEach(function(v, vi) {
+    var count = SONGS.filter(function(s) { return s.volIdx === vi; }).length;
+    var card = document.createElement('button');
+    card.className = 'vol-card' + (activeVolume === vi ? ' is-active' : '');
+    card.innerHTML =
+      '<span class="vol-card-emoji">' + v.emoji + '</span>' +
+      '<div class="vol-card-name">' + v.name + '</div>' +
+      '<div class="vol-card-count">' + count + ' songs</div>';
+    card.addEventListener('click', function() {
+      if (activeVolume === vi) {
+        activeVolume = -1;
+        activeVolHeader.classList.remove('visible');
+      } else {
+        activeVolume = vi;
+        volHeaderEmoji.textContent = v.emoji + ' ';
+        volHeaderName.textContent  = v.name;
+        volHeaderCount.textContent = count + ' songs';
+        activeVolHeader.classList.add('visible');
+      }
+      buildVolumeCards();
+      renderList();
+    });
+    volumeCardsRow.appendChild(card);
+  });
+}
+
+volBackBtn.addEventListener('click', function() {
+  activeVolume = -1;
+  activeVolHeader.classList.remove('visible');
+  buildVolumeCards();
+  renderList();
+});
+
+volShuffleBtn.addEventListener('click', function() {
+  shuffleOn = true;
+  shuffleBtn.classList.add('is-active');
+  var pool = getPoolIndices();
+  if (pool.length === 0) return;
+  var idx = pool[Math.floor(Math.random() * pool.length)];
+  buildShuffleQueue(idx);
+  selectTrack(idx);
+});
+
+/* ─── Render List ─────────────────────────────────────────────────── */
+function renderList() {
+  var pool = getPoolIndices();
+  songListEl.innerHTML = '';
+
+  if (pool.length === 0) {
+    songListEl.innerHTML = '<div class="empty-state">No songs match your filter.</div>';
+    return;
+  }
+
+  // Group by volume when showing all
+  var groups = {};
+  pool.forEach(function(i) {
+    var vi = SONGS[i].volIdx;
+    if (!groups[vi]) groups[vi] = [];
+    groups[vi].push(i);
+  });
+
+  var globalNum = 1;
+  Object.keys(groups).forEach(function(vi) {
+    vi = parseInt(vi);
+    var vol = VOLUMES[vi];
+
+    // Section header when showing all volumes
+    if (activeVolume < 0) {
+      var hdr = document.createElement('div');
+      hdr.className = 'vol-section-header';
+      hdr.innerHTML =
+        '<span class="vol-section-emoji">' + vol.emoji + '</span>' +
+        '<span class="vol-section-name">' + vol.name + '</span>' +
+        '<span class="vol-section-count">' + groups[vi].length + '</span>';
+      songListEl.appendChild(hdr);
+    }
+
+    groups[vi].forEach(function(songIdx) {
+      var s   = SONGS[songIdx];
+      var row = document.createElement('div');
+      row.className = 'song-item' +
+        (currentIdx === songIdx ? ' is-playing' + (isPlaying ? '' : ' is-paused') : '');
+      row.dataset.idx = songIdx;
+
+      row.innerHTML =
+        '<div class="song-num">' + (globalNum++) + '</div>' +
+        '<div class="playing-icon"><div class="bars">' +
+          '<span></span><span></span><span></span><span></span>' +
+        '</div></div>' +
+        '<div class="song-info">' +
+          '<div class="song-title">' + s.title + '</div>' +
+          '<div class="song-vol-tag">' + vol.name + ' &middot; ' +
+            (s.lang === 'tl' ? 'Tagalog' : s.lang === 'ceb' ? 'Cebuano' : 'English') +
+          '</div>' +
+        '</div>' +
+        '<div class="song-dur">' + (s.duration || '') + '</div>';
+
+      row.addEventListener('click', function() { selectTrack(songIdx); });
+      songListEl.appendChild(row);
+    });
+  });
+}
+
+/* ─── Select & Play ───────────────────────────────────────────────── */
+function selectTrack(idx) {
+  ensureAudioContext();
+  var s = SONGS[idx];
+  currentIdx  = idx;
+  userPaused  = false;
+  trackChanging = true;
+
+  // Build the full R2 URL
+  var url = r2(s.file);
+  audio.src = url;
+  audio.load();
+
+  playerTitle.textContent  = s.title;
+  playerVolTag.textContent = VOLUMES[s.volIdx].name + ' \u00b7 ' +
+    (s.lang === 'tl' ? 'Tagalog' : s.lang === 'ceb' ? 'Cebuano' : 'English');
+
+  safePlay(audio).then(function() {
+    isPlaying     = true;
+    trackChanging = false;
+    setBgBadge('live');
+    updatePlayBtn();
+    updateMediaSession(s);
+    requestWakeLock();
+  }).catch(function(e) {
+    console.warn('Play failed:', e);
+    trackChanging = false;
+    if (document.visibilityState === 'hidden') pendingPlay = true;
+  });
+
+  renderList();
+}
+
+function updatePlayBtn() {
+  iconPlay.style.display  = isPlaying ? 'none'  : 'block';
+  iconPause.style.display = isPlaying ? 'block' : 'none';
+}
+
+/* ─── Play/Pause ──────────────────────────────────────────────────── */
+playBtn.addEventListener('click', function() {
+  ensureAudioContext();
+  if (currentIdx < 0) {
+    var pool = getPoolIndices();
+    if (pool.length > 0) selectTrack(pool[0]);
+    return;
+  }
+  if (audio.paused) {
+    userPaused = false;
+    safePlay(audio).then(function() {
+      isPlaying = true;
+      setBgBadge('live');
+      updatePlayBtn();
+      requestWakeLock();
+    }).catch(function() {});
+  } else {
+    audio.pause();
+    isPlaying  = false;
+    userPaused = true;
+    setBgBadge('off');
+    updatePlayBtn();
+    releaseWakeLock();
+  }
+});
+
+/* ─── Advance Track ───────────────────────────────────────────────── */
+function advanceTrack(dir) {
+  var poolIdxs = getPoolIndices();
+  if (poolIdxs.length === 0) return;
+  var pos = poolIdxs.indexOf(currentIdx);
+  var nextIdx;
+  if (dir > 0) {
+    if (shuffleOn) {
+      nextIdx = nextShuffleTrack();
+    } else {
+      nextIdx = pos >= 0 && pos + 1 < poolIdxs.length ? poolIdxs[pos + 1] : poolIdxs[0];
+    }
+  } else {
+    nextIdx = pos > 0 ? poolIdxs[pos - 1] : poolIdxs[poolIdxs.length - 1];
+  }
+  selectTrack(nextIdx);
+}
+
+/* ─── Media Session ───────────────────────────────────────────────── */
+function initMediaSession() {
+  if (!('mediaSession' in navigator)) return;
+  navigator.mediaSession.setActionHandler('play', function() {
+    if (currentIdx >= 0 && audio.paused) {
+      userPaused = false;
+      safePlay(audio).then(function() { isPlaying = true; setBgBadge('live'); updatePlayBtn(); });
+    }
+  });
+  navigator.mediaSession.setActionHandler('pause', function() {
+    audio.pause(); isPlaying = false; userPaused = true;
+    setBgBadge('off'); updatePlayBtn(); releaseWakeLock();
+  });
+  navigator.mediaSession.setActionHandler('previoustrack', function() {
+    if (currentIdx >= 0) advanceTrack(-1);
+  });
+  navigator.mediaSession.setActionHandler('nexttrack', function() {
+    if (currentIdx >= 0) advanceTrack(1);
+  });
+  try {
+    navigator.mediaSession.setActionHandler('seekto', function(d) {
+      if (audio.duration && d.seekTime != null) audio.currentTime = d.seekTime;
+    });
+  } catch(e) {}
+}
+
+function updateMediaSession(s) {
+  if (!('mediaSession' in navigator)) return;
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title:  s.title,
+    artist: 'Pinoy Ninja',
+    album:  VOLUMES[s.volIdx].name
+  });
+  syncMediaSessionState();
+}
+
+function syncMediaSessionState() {
+  if (!('mediaSession' in navigator)) return;
+  navigator.mediaSession.playbackState = isPlaying ? 'playing' : 'paused';
+  if (audio.duration && !isNaN(audio.duration)) {
+    try {
+      navigator.mediaSession.setPositionState({
+        duration:     audio.duration,
+        playbackRate: audio.playbackRate,
+        position:     Math.min(audio.currentTime, audio.duration)
+      });
+    } catch(e) {}
+  }
+}
+syncMediaSessionState._last = -1;
+
+/* ─── Recovery & Wake Lock ────────────────────────────────────────── */
+var _recoveryTimer = null;
+var _recoveryCount = 0;
+
+function setBgBadge(state) {
+  bgBadge.classList.remove('is-live', 'is-recovering');
+  if (state === 'live') {
+    bgBadge.textContent = 'LIVE';
+    bgBadge.classList.add('is-live');
+  } else if (state === 'recovering') {
+    bgBadge.textContent = 'RECONNECTING';
+    bgBadge.classList.add('is-recovering');
+  } else {
+    bgBadge.textContent = '';
+  }
+}
+
+function startRecovery() {
+  if (_recoveryTimer || userPaused || currentIdx < 0) return;
+  _recoveryCount = 0;
+  setBgBadge('recovering');
+  _recoveryTimer = setInterval(function() {
+    if (userPaused || currentIdx < 0) { stopRecovery(); return; }
+    if (!audio.paused)                { stopRecovery(); return; }
+    if (_recoveryCount++ > 20)        { stopRecovery(); return; }
+    if (audio.readyState >= 2) {
+      safePlay(audio).catch(function() {});
+    } else if (audio.src) {
+      audio.load();
+    }
+  }, 1500);
+}
+
+function stopRecovery() {
+  if (_recoveryTimer) { clearInterval(_recoveryTimer); _recoveryTimer = null; }
+  _recoveryCount = 0;
+  setBgBadge(isPlaying ? 'live' : 'off');
+}
+
+function requestWakeLock() {
+  if (!('wakeLock' in navigator)) return;
+  if (_wakeLock && !_wakeLock.released) return;
+  navigator.wakeLock.request('screen').then(function(sentinel) {
+    _wakeLock = sentinel;
+    sentinel.addEventListener('release', function() {
+      _wakeLock = null;
+      if (!userPaused && isPlaying) setTimeout(requestWakeLock, 1000);
+    });
+  }).catch(function() {});
+}
+
+function releaseWakeLock() {
+  if (_wakeLock && !_wakeLock.released) { _wakeLock.release(); }
+  _wakeLock = null;
+}
+
+/* ─── Visibility / Background playback ───────────────────────────── */
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+    wasPlayingWhenHidden = !audio.paused && !userPaused;
+  } else {
+    if (_audioCtx && _audioCtx.state === 'suspended') _audioCtx.resume();
+    if ((wasPlayingWhenHidden || pendingPlay) && !userPaused && currentIdx >= 0) {
+      var url = r2(SONGS[currentIdx].file);
+      if (audio.src !== url || audio.readyState < 2) {
+        audio.src = url; audio.load();
+        audio.addEventListener('canplay', function onWakeReady() {
+          audio.removeEventListener('canplay', onWakeReady);
+          safePlay(audio).catch(function(e) { console.warn('Wake canplay resume failed:', e); });
+        });
+      } else {
+        safePlay(audio).catch(function(e) { console.warn('Wake resume failed:', e); });
+      }
+    }
+    wasPlayingWhenHidden = false; pendingPlay = false;
+    if (!userPaused && isPlaying) requestWakeLock();
+    if (!userPaused && !isPlaying && currentIdx >= 0) startRecovery();
+  }
+});
+
+window.addEventListener('resume', function() {
+  if (_audioCtx && _audioCtx.state === 'suspended') _audioCtx.resume();
+  if ((wasPlayingWhenHidden || pendingPlay) && !userPaused && currentIdx >= 0) {
+    safePlay(audio).catch(function(e) { console.warn('Page lifecycle resume failed:', e); });
+  }
+});
+
+setInterval(function() {
+  if (_audioCtx && _audioCtx.state === 'suspended') _audioCtx.resume();
+  if ((wasPlayingWhenHidden || pendingPlay) && !userPaused && currentIdx >= 0) {
+    if (audio.readyState >= 2) {
+      safePlay(audio).catch(function() {});
+    } else if (!trackChanging && audio.src) {
+      audio.load();
+    }
+  }
+}, 3000);
+
+/* ─── Progress Bar ────────────────────────────────────────────────── */
+audio.addEventListener('timeupdate', function() {
+  if (!audio.duration) return;
+  var pct = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = pct + '%';
+  currentTimeEl.textContent = fmtTime(audio.currentTime);
+  var _sec = Math.floor(audio.currentTime);
+  if (_sec !== syncMediaSessionState._last) { syncMediaSessionState._last = _sec; syncMediaSessionState(); }
+  // Preload next track near end
+  if (audio.duration - audio.currentTime < 60) {
+    var poolIdxs = getPoolIndices();
+    var pos = poolIdxs.indexOf(currentIdx);
+    var nextIdx = shuffleOn && shuffleQueue.length > 0 ? shuffleQueue[0]
+      : (pos >= 0 && pos + 1 < poolIdxs.length ? poolIdxs[pos + 1] : -1);
+    if (nextIdx >= 0) {
+      var nextUrl = r2(SONGS[nextIdx].file);
+      if (preloadAudio.src !== nextUrl) {
+        preloadAudio.src = nextUrl; preloadAudio.preload = 'auto'; preloadAudio.load();
+      }
+    }
+  }
+});
+
+audio.addEventListener('loadedmetadata', function() {
+  totalTimeEl.textContent = fmtTime(audio.duration);
+  syncMediaSessionState();
+});
+
+progressBar.addEventListener('click', function(e) {
+  if (!audio.duration) return;
+  var rect = progressBar.getBoundingClientRect();
+  var pct  = (e.clientX - rect.left) / rect.width;
+  if (pct < 0) pct = 0; if (pct > 1) pct = 1;
+  audio.currentTime = pct * audio.duration;
+});
+
+/* ─── Repeat ──────────────────────────────────────────────────────── */
+function updateRepeatBtn() {
+  var labels = ['Repeat: off', 'Repeat: all', 'Repeat: one'];
+  repeatBtn.title = labels[repeatMode];
+  repeatBtn.classList.toggle('is-active', repeatMode > 0);
+  repeatBtn.classList.toggle('repeat-one', repeatMode === 2);
+}
+
+repeatBtn.addEventListener('click', function() {
+  repeatMode = (repeatMode + 1) % 3;
+  updateRepeatBtn();
+});
+
+/* ─── Volume ──────────────────────────────────────────────────────── */
+audio.volume = 0.8;
+volSlider.style.setProperty('--vol-pct', '80%');
+
+function updateVolIcons(vol) {
+  iconVolHigh.style.display = (vol > 40)             ? 'block' : 'none';
+  iconVolLow.style.display  = (vol > 0 && vol <= 40) ? 'block' : 'none';
+  iconVolMute.style.display = (vol === 0)             ? 'block' : 'none';
+}
+
+function setVolume(val) {
+  var v = Math.max(0, Math.min(100, Math.round(val)));
+  audio.volume = v / 100;
+  volSlider.value = v;
+  volSlider.style.setProperty('--vol-pct', v + '%');
+  volLabel.textContent = v + '%';
+  updateVolIcons(v);
+  if (v > 0) lastVolume = v;
+}
+
+volSlider.addEventListener('input', function() {
+  setVolume(parseInt(volSlider.value, 10));
+});
+
+muteBtn.addEventListener('click', function() {
+  if (audio.volume > 0) { lastVolume = parseInt(volSlider.value, 10) || lastVolume; setVolume(0); }
+  else                  { setVolume(lastVolume); }
+});
+
+updateVolIcons(80);
+
+/* ─── Shuffle ─────────────────────────────────────────────────────── */
+function buildShuffleQueue(excludeIdx) {
+  var poolIdxs = getPoolIndices();
+  var pool = poolIdxs.filter(function(i) { return i !== excludeIdx; });
+  for (var i = pool.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
+  shuffleQueue = pool;
+}
+
+function nextShuffleTrack() {
+  if (shuffleQueue.length === 0) buildShuffleQueue(currentIdx);
+  return shuffleQueue.shift();
+}
+
+shuffleBtn.addEventListener('click', function() {
+  shuffleOn = !shuffleOn;
+  shuffleBtn.classList.toggle('is-active', shuffleOn);
+  shuffleBtn.title = shuffleOn ? 'Shuffle: on' : 'Shuffle: off';
+  if (shuffleOn) buildShuffleQueue(currentIdx);
+});
+
+shufflePlayBtn.addEventListener('click', function() {
+  shuffleOn = true;
+  shuffleBtn.classList.add('is-active');
+  var pool = getPoolIndices();
+  if (pool.length === 0) return;
+  var idx = pool[Math.floor(Math.random() * pool.length)];
+  buildShuffleQueue(idx);
+  selectTrack(idx);
+});
+
+/* ─── Prev / Next ─────────────────────────────────────────────────── */
+prevBtn.addEventListener('click', function() {
+  if (currentIdx < 0) return;
+  if (audio.currentTime > 3) { audio.currentTime = 0; }
+  else                       { advanceTrack(-1); }
+});
+
+nextBtn.addEventListener('click', function() {
+  if (currentIdx < 0) return;
+  advanceTrack(1);
+});
+
+/* ─── Search & Filter ─────────────────────────────────────────────── */
+searchInput.addEventListener('input', renderList);
+
+document.querySelectorAll('.lang-pill').forEach(function(pill) {
+  pill.addEventListener('click', function() {
+    document.querySelectorAll('.lang-pill').forEach(function(p) { p.classList.remove('active'); });
+    pill.classList.add('active');
+    activeLang = pill.dataset.lang;
+    renderList();
+  });
+});
+
+/* ─── Auto-advance ────────────────────────────────────────────────── */
+audio.addEventListener('ended', function() {
+  if (repeatMode === 2) {
+    audio.currentTime = 0;
+    safePlay(audio).catch(function(err) {
+      console.warn('Repeat-one blocked:', err);
+      if (document.visibilityState === 'hidden') pendingPlay = true;
+    });
+    return;
+  }
+  var poolIdxs = getPoolIndices();
+  var pos = poolIdxs.indexOf(currentIdx);
+  var nextIdx;
+  if (shuffleOn) {
+    nextIdx = nextShuffleTrack();
+  } else if (repeatMode === 1) {
+    nextIdx = pos >= 0 ? poolIdxs[(pos + 1) % poolIdxs.length] : poolIdxs[0];
+  } else {
+    if (pos >= 0 && pos + 1 < poolIdxs.length) {
+      nextIdx = poolIdxs[pos + 1];
+    } else {
+      return;
+    }
+  }
+  selectTrack(nextIdx);
+});
+
+/* ─── Init ────────────────────────────────────────────────────────── */
+initMediaSession();
+buildVolumeCards();
+renderList();
+
+</script>
+</body>
+</html>
