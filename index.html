@@ -321,9 +321,25 @@
       pointer-events: none;
     }
 
+    #clearSearch {
+      position: absolute;
+      right: 0.65rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0 0.2rem;
+      display: none;
+    }
+    #clearSearch:hover { color: var(--accent); }
+
     #searchInput {
       width: 100%;
-      padding: 0.58rem 0.85rem 0.58rem 2.2rem;
+      padding: 0.58rem 2rem 0.58rem 2.2rem;
       border: 1.5px solid var(--border-soft);
       border-radius: 20px;
       font-size: 0.86rem;
@@ -886,7 +902,8 @@
   <div class="filter-row">
     <div class="search-wrap">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-      <input id="searchInput" type="search" placeholder="Search songs…" autocomplete="off" spellcheck="false">
+      <input id="searchInput" type="text" placeholder="Search songs…" autocomplete="off" spellcheck="false">
+      <button id="clearSearch" title="Clear search">&times;</button>
     </div>
     <div class="lang-filters">
       <button class="lang-pill active" data-lang="all">All</button>
@@ -1039,10 +1056,13 @@ var SONGS = [
   { title: "Sayaw Ng Puso (Funk-Pop)",          file: "Sayaw Ng Puso (Funk-Pop).mp3",           lang: 'tl',  volIdx: 1 },
   { title: "Sayaw Pa Tayo",                     file: "Sayaw Pa Tayo.mp3",          duration: "3:30", lang: 'tl', volIdx: 1 },
   { title: "Sumasayaw sa Alon",                 file: "Sumasayaw sa Alon.mp3",                  lang: 'tl',  volIdx: 1 },
-  { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 1 },
-  { title: "Dito Ka Sa Akin (Synth-Pop2)",      file: "Dito Ka Sa AKin (Synth-Pop2).mp3",       lang: 'tl',  volIdx: 1 },
-  { title: "Hawakan Ang Ngayon (Synth-Pop)",    file: "Hawakan Ang Ngayon (Synth-Pop).mp3",     lang: 'tl',  volIdx: 1 },
-  { title: "Hawakan Ang Ngayon (Synth-Pop2)",   file: "Hawakan Ang Ngayon (Synth-Pop2).mp3",    lang: 'tl',  volIdx: 1 },
+  { title: "Busy at Sexy",                       file: "Busy at Sexy.mp3",                       lang: 'tl',  volIdx: 1 },
+  { title: "Dance Partner (Pop - Hip Hop)",      file: "Dance Partner (Pop - Hip Hop).mp3",      lang: 'en',  volIdx: 1 },
+  { title: "Dance Some More (Reggae)",           file: "Dance Some More (Reggae).mp3",           lang: 'en',  volIdx: 1 },
+  { title: "Dancing Through The Years (Salsa)",  file: "Dancing Through The Years (Salsa).mp3",  lang: 'en',  volIdx: 1 },
+  { title: "Kasayaw Ko Habang-Buhay (Disco)",    file: "Kasayaw Ko Habang-Buhay (Disco).mp3",    lang: 'tl',  volIdx: 1 },
+  { title: "Sayaw Pa Tayo (Disco)",              file: "Sayaw Pa Tayo (Disco).mp3",              lang: 'tl',  volIdx: 1 },
+  { title: "Sumasayaw Sa Alon (Disco 2)",        file: "Sumasayaw Sa Alon (Disco 2).mp3",        lang: 'tl',  volIdx: 1 },
   { title: "We Keep Dancing (Bachata 2)",       file: "We Keep Dancing (Bachata 2).mp3",        lang: 'en',  volIdx: 0 },
   { title: "We Keep Dancing (Batchata)",        file: "We Keep Dancing (Batchata).mp3",         lang: 'en',  volIdx: 0 },
   { title: "We Keep Dancing",                   file: "We Keep Dancing (Cha-Cha).mp3",          lang: 'en',  volIdx: 0 },
@@ -1126,7 +1146,12 @@ var SONGS = [
   { title: "Himig Ng Kahapon (R&B Funky)",      file: "Himig Ng Kahapon (R&B Funky).mp3",       lang: 'tl',  volIdx: 4 },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
-  { title: "Habang Tumatagal",                  file: "Habang Tumatagal.mp3",       duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 5 },
+  { title: "Dito Ka Sa Akin (Synth-Pop2)",       file: "Dito Ka Sa AKin (Synth-Pop2).mp3",       lang: 'tl',  volIdx: 5 },
+  { title: "Habang Tumatagal",                   file: "Habang Tumatagal.mp3",       duration: "3:30", lang: 'tl', volIdx: 5 },
+  { title: "Habang Tumatagal (R&B)",             file: "Habang Tumatagal (R&B).mp3",             lang: 'tl',  volIdx: 5 },
+  { title: "Hawakan Ang Ngayon (Synth-Pop)",     file: "Hawakan Ang Ngayon (Synth-Pop).mp3",     lang: 'tl',  volIdx: 5 },
+  { title: "Hawakan Ang Ngayon (Synth-Pop2)",    file: "Hawakan Ang Ngayon (Synth-Pop2).mp3",    lang: 'tl',  volIdx: 5 },
   { title: "Ito Tayo",                          file: "Ito Tayo.mp3",                           lang: 'tl',  volIdx: 5 },
   { title: "Kanlungan",                         file: "Kanlungan.mp3",              duration: "3:30", lang: 'tl', volIdx: 5 },
   { title: "Kung Nandito Ka Sana",              file: "Kung Nandito Ka Sana.mp3",   duration: "3:30", lang: 'tl', volIdx: 5 },
@@ -1772,7 +1797,16 @@ nextBtn.addEventListener('click', function() {
 });
 
 /* ─── Search & Filter ─────────────────────────────────────────────── */
-searchInput.addEventListener('input', renderList);
+searchInput.addEventListener('input', function() {
+  document.getElementById('clearSearch').style.display = searchInput.value ? 'block' : 'none';
+  renderList();
+});
+document.getElementById('clearSearch').addEventListener('click', function() {
+  searchInput.value = '';
+  this.style.display = 'none';
+  searchInput.focus();
+  renderList();
+});
 
 document.querySelectorAll('.lang-pill').forEach(function(pill) {
   pill.addEventListener('click', function() {
