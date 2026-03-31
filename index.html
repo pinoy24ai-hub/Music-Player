@@ -1884,7 +1884,7 @@ function initSotd() {
   var song = SONGS[idx];
   var btn  = document.getElementById('sotdBtn');
   var lbl  = document.getElementById('sotdLabel');
-  lbl.innerHTML = 'Song of the Day<span class="sotd-title">' + song.title + '</span>';
+  lbl.innerHTML = 'Song of the Day';
   btn.addEventListener('click', function() {
     // Show all volumes so the song is visible in the list, then play
     activeVolume = -1;
