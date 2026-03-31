@@ -155,6 +155,17 @@
 
     .yt-icon { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
 
+    #sotdBtn .sotd-title {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--accent-warm);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
     .v2-badge {
       font-size: 0.65rem;
       font-weight: 700;
@@ -866,10 +877,10 @@
     <p class="tagline">Original songs in English &middot; Tagalog &middot; Cebuano</p>
     <p class="tagline" style="margin-top:0.2rem; font-size:0.65rem; font-style:italic; text-transform:none; letter-spacing:0.02em; color:#ff4444;">&copy; 2026 Pinoy Ninja. Original lyrics and compositions. Produced with Suno AI.</p>
     <div class="header-bottom">
-      <a class="yt-btn" href="https://www.youtube.com/playlist?list=PLYEqiiu-5XDtcY6MRYf3YgoZHgD2FDfV7" target="_blank" rel="noopener noreferrer">
-        <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        Watch on YouTube
-      </a>
+      <button id="sotdBtn" class="yt-btn" title="Play today's featured song">
+        <svg class="yt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        <span id="sotdLabel">Song of the Day</span>
+      </button>
     </div>
   </div>
 </header>
@@ -1057,6 +1068,11 @@ var SONGS = [
   { title: "Sayaw Pa Tayo",                     file: "Sayaw Pa Tayo.mp3",          duration: "3:30", lang: 'tl', volIdx: 1 },
   { title: "Sumasayaw sa Alon",                 file: "Sumasayaw sa Alon.mp3",                  lang: 'tl',  volIdx: 1 },
   { title: "Busy at Sexy",                       file: "Busy at Sexy.mp3",                       lang: 'tl',  volIdx: 1 },
+  { title: "Dancing With The Tide (Salsa)",      file: "Dancing With The Tide (Salsa).mp3",      lang: 'en',  volIdx: 1 },
+  { title: "Flames in the Dark Room (Dance Synth)", file: "Flames in the Dark Room (Dance Synth).mp3", lang: 'en', volIdx: 1 },
+  { title: "Flames in the Dark Room (Pop)",      file: "Flames in the Dark Room (Pop).mp3",      lang: 'en',  volIdx: 1 },
+  { title: "Just You And Me (Salsa)",            file: "Just You And Me (Salsa).mp3",            lang: 'en',  volIdx: 1 },
+  { title: "Your Sanctuary (Disco)",             file: "Your Sanctuary (Disco).mp3",             lang: 'en',  volIdx: 1 },
   { title: "Dance Partner (Pop - Hip Hop)",      file: "Dance Partner (Pop - Hip Hop).mp3",      lang: 'en',  volIdx: 1 },
   { title: "Dance Some More (Reggae)",           file: "Dance Some More (Reggae).mp3",           lang: 'en',  volIdx: 1 },
   { title: "Dancing Through The Years (Salsa)",  file: "Dancing Through The Years (Salsa).mp3",  lang: 'en',  volIdx: 1 },
@@ -1851,10 +1867,48 @@ audio.addEventListener('ended', function() {
   selectTrack(nextIdx);
 });
 
+/* ─── Song of the Day ─────────────────────────────────────────────── */
+function getSotdIndex() {
+  var now  = new Date();
+  var seed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+  // Simple deterministic hash so it's the same song all day
+  var hash = seed;
+  hash = ((hash >> 16) ^ hash) * 0x45d9f3b;
+  hash = ((hash >> 16) ^ hash) * 0x45d9f3b;
+  hash = (hash >> 16) ^ hash;
+  return Math.abs(hash) % SONGS.length;
+}
+
+function initSotd() {
+  var idx  = getSotdIndex();
+  var song = SONGS[idx];
+  var btn  = document.getElementById('sotdBtn');
+  var lbl  = document.getElementById('sotdLabel');
+  lbl.innerHTML = 'Song of the Day<span class="sotd-title">' + song.title + '</span>';
+  btn.addEventListener('click', function() {
+    // Show all volumes so the song is visible in the list, then play
+    activeVolume = -1;
+    activeVolHeader.classList.remove('visible');
+    buildVolumeCards();
+    renderList();
+    selectTrack(idx);
+    // Scroll the playing row into view
+    setTimeout(function() {
+      var el = document.querySelector('.song-item.is-playing');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 150);
+  });
+  // Schedule refresh at midnight
+  var now   = new Date();
+  var msToMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
+  setTimeout(function() { initSotd(); setInterval(initSotd, 86400000); }, msToMidnight);
+}
+
 /* ─── Init ────────────────────────────────────────────────────────── */
 initMediaSession();
 buildVolumeCards();
 renderList();
+initSotd();
 
 </script>
 </body>
