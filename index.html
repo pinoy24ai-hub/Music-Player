@@ -894,6 +894,10 @@
         <svg class="yt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
         <span id="sotdLabel">Song of the Day</span>
       </button>
+      <button id="latestDropBtn" class="yt-btn" title="Play the latest drop">
+        <svg class="yt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H13L13 2z"/></svg>
+        <span>Latest Drop</span>
+      </button>
     </div>
   </div>
 </header>
@@ -1261,6 +1265,9 @@ var SONGS = [
   { title: "Trading Ice for Rain",              file: "Trading Ice for Rain.mp3",               lang: 'en',  volIdx: 5 },
   { title: "Trading Ice for Rain (R&B)",        file: "Trading Ice for Rain (R&B).mp3",         lang: 'en',  volIdx: 5 },
   { title: "Where The Balay Is",                file: "Where The Balay Is.mp3",                 lang: 'ceb', volIdx: 5 },
+  { title: "Lost In The Beat",                  file: "Lost In The Beat.mp3",                   lang: 'en',  volIdx: 4, added: '2026-04-01' },
+  { title: "Lost In The Beat (Disco)",          file: "Lost In The Beat (Disco).mp3",           lang: 'en',  volIdx: 0, added: '2026-04-01' },
+  { title: "Lost In The Beat (R&B-Pop)",        file: "Lost In The Beat (R&B-Pop).mp3",         lang: 'en',  volIdx: 0, added: '2026-04-01' },
 ];
 
 /* ─── State ───────────────────────────────────────────────────────── */
@@ -1922,11 +1929,32 @@ function initSotd() {
   setTimeout(function() { initSotd(); setInterval(initSotd, 86400000); }, msToMidnight);
 }
 
+/* ─── Latest Drop ─────────────────────────────────────────────────── */
+function initLatestDrop() {
+  var maxDate = '';
+  SONGS.forEach(function(s) { if (s.added && s.added > maxDate) maxDate = s.added; });
+  var candidates = [];
+  SONGS.forEach(function(s, i) { if (s.added === maxDate) candidates.push(i); });
+  document.getElementById('latestDropBtn').addEventListener('click', function() {
+    var idx = candidates[Math.floor(Math.random() * candidates.length)];
+    activeVolume = -1;
+    activeVolHeader.classList.remove('visible');
+    buildVolumeCards();
+    renderList();
+    selectTrack(idx);
+    setTimeout(function() {
+      var el = document.querySelector('.song-item.is-playing');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 150);
+  });
+}
+
 /* ─── Init ────────────────────────────────────────────────────────── */
 initMediaSession();
 buildVolumeCards();
 renderList();
 initSotd();
+initLatestDrop();
 
 </script>
 </body>
