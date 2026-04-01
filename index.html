@@ -293,20 +293,22 @@
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      background: var(--accent);
-      color: #04101c;
-      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #ffffff;
+      border: 1.5px solid rgba(255,255,255,0.35);
       border-radius: 20px;
       padding: 0.42rem 0.82rem;
       font-size: 0.76rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.15s;
+      transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    .vol-shuffle-btn:hover { background: var(--accent-soft); }
+    .vol-shuffle-btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
+    .vol-shuffle-btn:active,
+    .vol-shuffle-btn.btn-fired { background: var(--accent); color: #04101c; border-color: var(--accent); transform: scale(0.96); box-shadow: 0 2px 16px rgba(56,201,232,0.55); }
 
     /* ─── Filter Row ───────────────────────────────────────────────── */
     .filter-row {
@@ -401,9 +403,9 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(135deg, var(--accent-sea), var(--accent));
-      color: #04101c;
-      border: none;
+      background: rgba(255,255,255,0.12);
+      color: #ffffff;
+      border: 1.5px solid rgba(255,255,255,0.35);
       border-radius: 24px;
       padding: 0.62rem 1.15rem;
       font-size: 0.86rem;
@@ -411,17 +413,18 @@
       font-family: var(--font-body);
       cursor: pointer;
       margin-bottom: 1.2rem;
-      transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
-      box-shadow: 0 2px 16px rgba(56,201,232,0.3);
+      transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+      box-shadow: none;
     }
 
     .shuffle-play-btn:hover {
-      opacity: 0.9;
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.6);
       transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(56,201,232,0.4);
     }
 
-    .shuffle-play-btn:active { transform: scale(0.97); }
+    .shuffle-play-btn:active,
+    .shuffle-play-btn.btn-fired { background: var(--accent); color: #04101c; border-color: var(--accent); transform: scale(0.97); box-shadow: 0 2px 16px rgba(56,201,232,0.55); }
 
     /* ─── Song List ────────────────────────────────────────────────── */
     .song-list {
@@ -671,20 +674,26 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: var(--text-muted);
+      color: var(--text-light);
       padding: 0.3rem;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      transition: color 0.15s, background 0.15s, transform 0.1s;
+      transition: color 0.15s, background 0.15s, transform 0.1s, box-shadow 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
 
-    .ctrl-btn:hover { color: var(--text); background: rgba(56,201,232,0.08); }
-    .ctrl-btn:active { transform: scale(0.9); }
-    .ctrl-btn.is-active { color: var(--accent); }
-    .ctrl-btn.repeat-one { color: var(--accent-warm); }
+    .ctrl-btn:hover { color: var(--text); background: rgba(56,201,232,0.1); }
+    .ctrl-btn:active { transform: scale(0.88); color: #04101c; background: var(--accent); box-shadow: 0 2px 12px rgba(56,201,232,0.5); }
+    .ctrl-btn.is-active { color: var(--accent); background: rgba(56,201,232,0.15); box-shadow: 0 0 8px rgba(56,201,232,0.3); }
+    .ctrl-btn.is-active:active { color: #04101c; background: var(--accent); }
+    #shuffleBtn { color: #ffffff; }
+    #shuffleBtn:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
+    #shuffleBtn:active { color: #ffffff; background: #0a1f2e; box-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+    #shuffleBtn.is-active { color: #ffffff; background: rgba(255,255,255,0.15); box-shadow: 0 0 8px rgba(255,255,255,0.25); }
+    #shuffleBtn.is-active:active { color: #ffffff; background: #0a1f2e; }
+    .ctrl-btn.repeat-one { color: var(--accent-warm); background: rgba(240,192,96,0.12); }
 
     .play-btn {
       width: 48px; height: 48px;
@@ -692,11 +701,11 @@
       color: #04101c;
       border-radius: 50%;
       box-shadow: 0 2px 16px rgba(56,201,232,0.35);
-      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s, filter 0.15s;
     }
 
-    .play-btn:hover { opacity: 0.92; box-shadow: 0 4px 22px rgba(56,201,232,0.45); background: linear-gradient(135deg, var(--accent-sea), var(--accent)); color: #04101c; transform: scale(1.04); }
-    .play-btn:active { transform: scale(0.95); }
+    .play-btn:hover { opacity: 0.92; box-shadow: 0 4px 22px rgba(56,201,232,0.45); background: linear-gradient(135deg, var(--accent-sea), var(--accent)); color: #04101c; transform: scale(1.06); }
+    .play-btn:active { transform: scale(0.93); filter: brightness(0.75); box-shadow: 0 1px 8px rgba(56,201,232,0.25); }
 
     /* Volume */
     .volume-row {
@@ -1236,6 +1245,8 @@ var SONGS = [
   { title: "Thank You, My Love",                file: "Thank You, My Love.mp3",                 lang: 'en',  volIdx: 8 },
   { title: "Thank You, My Love (Retro-Soul)",   file: "Thank You, My Love (Retro-Soul).mp3",    lang: 'en',  volIdx: 8 },
   { title: "This Time We're Staying",           file: "This Time We're Staying.mp3",            lang: 'en',  volIdx: 8 },
+  { title: "In the Quiet Between Us",            file: "In the Quiet Between Us.mp3",            lang: 'en',  volIdx: 8 },
+  { title: "In the Quiet Between Us (Bachata)",  file: "In the Quiet Between Us (Bachata).mp3",  lang: 'en',  volIdx: 1 },
   { title: "Under This Umbrella",               file: "Under This Umbrella.mp3",                lang: 'en',  volIdx: 8 },
   { title: "You Are My Everything",             file: "You Are My Everything.mp3",              lang: 'en',  volIdx: 6 },
 
@@ -1244,6 +1255,7 @@ var SONGS = [
   { title: "Barkada (Ver 2)",                   file: "Barkada (Ver 2).mp3",                    lang: 'tl',  volIdx: 9 },
   { title: "Panay Panalangin",                  file: "Panay Panalangin.mp3",                   lang: 'tl',  volIdx: 9 },
   { title: "Steady Ascent",                     file: "Steady Ascent.mp3",                      lang: 'en',  volIdx: 9 },
+  { title: "Steady Ascent (Rock)",              file: "Steady Ascent (Rock).mp3",               lang: 'en',  volIdx: 9 },
   { title: "Trading Ice for Rain",              file: "Trading Ice for Rain.mp3",               lang: 'en',  volIdx: 9 },
   { title: "Trading Ice for Rain (R&B)",        file: "Trading Ice for Rain (R&B).mp3",         lang: 'en',  volIdx: 9 },
   { title: "Where The Balay Is",                file: "Where The Balay Is.mp3",                 lang: 'ceb', volIdx: 9 },
@@ -1389,6 +1401,8 @@ volBackBtn.addEventListener('click', function() {
 volShuffleBtn.addEventListener('click', function() {
   shuffleOn = true;
   shuffleBtn.classList.add('is-active');
+  volShuffleBtn.classList.add('btn-fired');
+  setTimeout(function() { volShuffleBtn.classList.remove('btn-fired'); }, 500);
   var pool = getPoolIndices();
   if (pool.length === 0) return;
   var idx = pool[Math.floor(Math.random() * pool.length)];
@@ -1800,6 +1814,8 @@ shuffleBtn.addEventListener('click', function() {
 shufflePlayBtn.addEventListener('click', function() {
   shuffleOn = true;
   shuffleBtn.classList.add('is-active');
+  shufflePlayBtn.classList.add('btn-fired');
+  setTimeout(function() { shufflePlayBtn.classList.remove('btn-fired'); }, 500);
   var pool = getPoolIndices();
   if (pool.length === 0) return;
   var idx = pool[Math.floor(Math.random() * pool.length)];
