@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python3 -c \"from PIL import Image; img = Image.open\\(''/c/Users/efos2/OneDrive/Claude Code/Music Player/Music Player/og-cover.jpg''\\); print\\(img.size\\)\")",
       "Bash(powershell -command \"Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(''C:\\\\Users\\\\efos2\\\\OneDrive\\\\Claude Code\\\\Music Player\\\\Music Player\\\\og-cover.jpg''\\); Write-Host $img.Width ''x'' $img.Height; $img.Dispose\\(\\)\")",
-      "Bash(powershell -command \"$path = ''C:\\\\Users\\\\efos2\\\\OneDrive\\\\Claude Code\\\\Music Player\\\\Music Player\\\\og-cover.jpg''; Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\($path\\); $img.Width.ToString\\(\\) + ''x'' + $img.Height.ToString\\(\\); $img.Dispose\\(\\)\")"
+      "Bash(powershell -command \"$path = ''C:\\\\Users\\\\efos2\\\\OneDrive\\\\Claude Code\\\\Music Player\\\\Music Player\\\\og-cover.jpg''; Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\($path\\); $img.Width.ToString\\(\\) + ''x'' + $img.Height.ToString\\(\\); $img.Dispose\\(\\)\")",
+      "Bash(powershell -File:*)"
     ]
   }
 }
