@@ -2008,17 +2008,24 @@ function initSotd() {
 
 /* ─── Latest Drop ─────────────────────────────────────────────────── */
 function initLatestDrop() {
-  var maxDate = '';
-  SONGS.forEach(function(s) { if (s.added && s.added > maxDate) maxDate = s.added; });
-  var candidates = [];
-  SONGS.forEach(function(s, i) { if (s.added === maxDate) candidates.push(i); });
+  var latestIdx = -1;
+  var latestTs = -Infinity;
+  SONGS.forEach(function(s, i) {
+    if (!s.added) return;
+    var ts = Date.parse(s.added);
+    if (isNaN(ts)) return;
+    if (ts > latestTs) {
+      latestTs = ts;
+      latestIdx = i;
+    }
+  });
   document.getElementById('latestDropBtn').addEventListener('click', function() {
-    var idx = candidates[Math.floor(Math.random() * candidates.length)];
+    if (latestIdx < 0) return;
     activeVolume = -1;
     activeVolHeader.classList.remove('visible');
     buildVolumeCards();
     renderList();
-    selectTrack(idx);
+    selectTrack(latestIdx);
     setTimeout(function() {
       var el = document.querySelector('.song-item.is-playing');
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
