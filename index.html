@@ -1292,6 +1292,8 @@ var activeVolume   = -1;
 var activeLang     = 'all';
 var expandedGroups = {};
 var _wakeLock      = null;
+var autoplayBlocked = false;
+var autoplayUnlockArmed = false;
 
 /* ─── AudioContext ────────────────────────────────────────────────── */
 function ensureAudioContext() {
@@ -1364,6 +1366,67 @@ function fmtTime(s) {
 function safePlay(el) {
   var p = el.play();
   return (p && typeof p.then === 'function') ? p : Promise.resolve();
+}
+
+function armAutoplayUnlock() {
+  if (autoplayUnlockArmed) return;
+  autoplayUnlockArmed = true;
+  ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(function(type) {
+    document.addEventListener(type, handleAutoplayUnlock);
+  });
+}
+
+function disarmAutoplayUnlock() {
+  if (!autoplayUnlockArmed) return;
+  autoplayUnlockArmed = false;
+  ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(function(type) {
+    document.removeEventListener(type, handleAutoplayUnlock);
+  });
+}
+
+function markAutoplayBlocked(err) {
+  autoplayBlocked = true;
+  armAutoplayUnlock();
+  if (err) console.warn('Autoplay blocked, waiting for first interaction:', err);
+}
+
+function getStartupTrackIndex() {
+  var pool = getPoolIndices();
+  if (pool.length === 0) return -1;
+  if (!shuffleOn) return pool[0];
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function handleAutoplayUnlock() {
+  if (!autoplayBlocked || userPaused || isPlaying || trackChanging) {
+    if (!autoplayBlocked || isPlaying) disarmAutoplayUnlock();
+    return;
+  }
+  ensureAudioContext();
+  if (currentIdx < 0) {
+    var idx = getStartupTrackIndex();
+    if (idx < 0) return;
+    if (shuffleOn) buildShuffleQueue(idx);
+    selectTrack(idx);
+    return;
+  }
+  safePlay(audio).then(function() {
+    autoplayBlocked = false;
+    isPlaying = true;
+    setBgBadge('live');
+    updatePlayBtn();
+    requestWakeLock();
+    disarmAutoplayUnlock();
+  }).catch(function(err) {
+    console.warn('First-interaction resume failed:', err);
+  });
+}
+
+function attemptAutoplayStart() {
+  var idx = getStartupTrackIndex();
+  if (idx < 0) return;
+  if (shuffleOn) buildShuffleQueue(idx);
+  selectTrack(idx);
 }
 
 function getPoolIndices() {
@@ -1511,6 +1574,8 @@ function selectTrack(idx) {
     (s.lang === 'tl' ? 'Tagalog' : s.lang === 'ceb' ? 'Cebuano' : 'English');
 
   safePlay(audio).then(function() {
+    autoplayBlocked = false;
+    disarmAutoplayUnlock();
     isPlaying     = true;
     trackChanging = false;
     setBgBadge('live');
@@ -1521,6 +1586,7 @@ function selectTrack(idx) {
     console.warn('Play failed:', e);
     trackChanging = false;
     if (document.visibilityState === 'hidden') pendingPlay = true;
+    if (!userPaused) markAutoplayBlocked(e);
   });
 
   renderList();
@@ -1542,11 +1608,15 @@ playBtn.addEventListener('click', function() {
   if (audio.paused) {
     userPaused = false;
     safePlay(audio).then(function() {
+      autoplayBlocked = false;
+      disarmAutoplayUnlock();
       isPlaying = true;
       setBgBadge('live');
       updatePlayBtn();
       requestWakeLock();
-    }).catch(function() {});
+    }).catch(function(e) {
+      markAutoplayBlocked(e);
+    });
   } else {
     audio.pause();
     isPlaying  = false;
@@ -1962,6 +2032,7 @@ buildVolumeCards();
 renderList();
 initSotd();
 initLatestDrop();
+attemptAutoplayStart();
 
 </script>
 </body>
