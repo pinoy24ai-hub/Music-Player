@@ -1203,6 +1203,7 @@ var SONGS = [
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
   { title: "Always (UK House)",                 file: "Always (UK House).mp3",                  lang: 'en',  volIdx: 3 },
   { title: "Always You",                        file: "Always You.mp3",                         lang: 'en',  volIdx: 3 },
+  { title: "As Time Goes On (UK House)",        file: "As Time Goes On (UK House).mp3",         lang: 'en',  volIdx: 3 },
   { title: "Because of You",                    file: "Because of You.mp3",                     lang: 'en',  volIdx: 3 },
   { title: "Between Us",                        file: "Between Us.mp3",                         lang: 'en',  volIdx: 3 },
   { title: "Coming Back to You",                file: "Coming Back to You.mp3",                 lang: 'en',  volIdx: 3 },
@@ -1236,6 +1237,7 @@ var SONGS = [
   { title: "The Rhythm of the Dark",            file: "The Rhythm of the Dark.mp3", duration: "3:30", lang: 'en', volIdx: 4 },
   { title: "The World You Chose",               file: "The World You Chose.mp3",    duration: "3:30", lang: 'en', volIdx: 4 },
   { title: "This Is Us",                        file: "This Is Us.mp3",                         lang: 'en',  volIdx: 4 },
+  { title: "As Time Goes On (Chill)",           file: "As Time Goes On (Chill).mp3",            lang: 'en',  volIdx: 4 },
 
   // ── (former Good Times — distributed) ────────────────────────
   { title: "Baka Ang Happy Ending",             file: "Baka Ang Happy Ending.mp3",              lang: 'tl',  volIdx: 1 },
@@ -1259,6 +1261,7 @@ var SONGS = [
   { title: "Barkada",                           file: "Barkada.mp3",                            lang: 'tl',  volIdx: 5 },
   { title: "Barkada (Ver 2)",                   file: "Barkada (Ver 2).mp3",                    lang: 'tl',  volIdx: 5 },
   { title: "Panay Panalangin",                  file: "Panay Panalangin.mp3",                   lang: 'tl',  volIdx: 5 },
+  { title: "Ako'y Lalaban",                     file: "Ako'y Lalaban.mp3",                      lang: 'tl',  volIdx: 5 },
   { title: "Steady Ascent",                     file: "Steady Ascent.mp3",                      lang: 'en',  volIdx: 5 },
   { title: "Steady Ascent (Indie Pop)",          file: "Steady Ascent (Indie Pop).mp3",          lang: 'en',  volIdx: 5 },
   { title: "Steady Ascent (Rock)",              file: "Steady Ascent (Rock).mp3",               lang: 'en',  volIdx: 5 },
@@ -1280,7 +1283,7 @@ var isPlaying            = false;
 var userPaused           = false;
 var wasPlayingWhenHidden = false;
 var pendingPlay          = false;
-var shuffleOn      = false;
+var shuffleOn      = true;
 var shuffleQueue   = [];
 var repeatMode     = 0;
 var lastVolume     = 80;
@@ -1345,6 +1348,10 @@ var volHeaderEmoji = document.getElementById('volHeaderEmoji');
 var volHeaderName  = document.getElementById('volHeaderName');
 var volHeaderCount = document.getElementById('volHeaderCount');
 var volumeCardsRow = document.getElementById('volumeCardsRow');
+
+shuffleBtn.classList.add('is-active');
+shuffleBtn.title = 'Shuffle: on';
+shuffleBtn.setAttribute('aria-label', 'Shuffle is on');
 
 /* ─── Helpers ─────────────────────────────────────────────────────── */
 function fmtTime(s) {
