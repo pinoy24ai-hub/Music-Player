@@ -1973,37 +1973,33 @@ audio.addEventListener('ended', function() {
 function getSotdIndex() {
   var now  = new Date();
   var seed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
-  // Simple deterministic hash so it's the same song all day
-  var hash = seed;
-  hash = ((hash >> 16) ^ hash) * 0x45d9f3b;
-  hash = ((hash >> 16) ^ hash) * 0x45d9f3b;
-  hash = (hash >> 16) ^ hash;
-  return Math.abs(hash) % SONGS.length;
+  // Math.imul gives proper 32-bit integer multiplication — no float drift
+  var x = seed | 0;
+  x = Math.imul(x ^ (x >>> 16), 0x45d9f3b);
+  x = Math.imul(x ^ (x >>> 16), 0x45d9f3b);
+  x = x ^ (x >>> 16);
+  return Math.abs(x) % SONGS.length;
 }
 
 function initSotd() {
-  var idx  = getSotdIndex();
-  var song = SONGS[idx];
-  var btn  = document.getElementById('sotdBtn');
-  var lbl  = document.getElementById('sotdLabel');
-  lbl.innerHTML = 'Song of the Day';
-  btn.addEventListener('click', function() {
-    // Show all volumes so the song is visible in the list, then play
+  var idx = getSotdIndex();
+  var btn = document.getElementById('sotdBtn');
+  // Use onclick to replace any previous handler — prevents stacking on midnight refresh
+  btn.onclick = function() {
     activeVolume = -1;
     activeVolHeader.classList.remove('visible');
     buildVolumeCards();
     renderList();
     selectTrack(idx);
-    // Scroll the playing row into view
     setTimeout(function() {
       var el = document.querySelector('.song-item.is-playing');
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 150);
-  });
-  // Schedule refresh at midnight
-  var now   = new Date();
+  };
+  // Schedule a single refresh at the next midnight
+  var now = new Date();
   var msToMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
-  setTimeout(function() { initSotd(); setInterval(initSotd, 86400000); }, msToMidnight);
+  setTimeout(initSotd, msToMidnight);
 }
 
 /* ─── Latest Drop ─────────────────────────────────────────────────── */
