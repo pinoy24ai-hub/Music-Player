@@ -256,6 +256,7 @@ var SONGS = [
   { title: "Steady Hearts",                     file: "Steady Hearts.mp3",                      lang: 'en',  volIdx: 3 },
   { title: "Under This Umbrella",               file: "Under This Umbrella.mp3",                lang: 'en',  volIdx: 3 },
   { title: "You Are My Everything",             file: "You Are My Everything.mp3",              lang: 'en',  volIdx: 3 },
+  { title: "With You (Pop-Rock)",               file: "With You (Pop-Rock).mp3",                lang: 'en',  volIdx: 3, added: '2026-04-10' },
 
   // ── Vol 9: Sundries ────────────────────────────────────────────
   { title: "Barkada",                           file: "Barkada.mp3",                            lang: 'tl',  volIdx: 5 },
