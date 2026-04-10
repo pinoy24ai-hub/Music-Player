@@ -223,7 +223,7 @@ var SONGS = [
   { title: "Home",                              file: "Home.mp3",                               lang: 'en',  volIdx: 4 },
   { title: "I Wrote The Mountains",             file: "I Wrote The Mountains.mp3",              lang: 'en',  volIdx: 4, added: '2026-04-08' },
   { title: "Maybe Happy Ending",                file: "Maybe Happy Ending.mp3",                 lang: 'en',  volIdx: 4 },
-  { title: "My Safe Place",                     file: "My Safe Place.mp3",                      lang: 'en',  volIdx: 4 },
+  { title: "My Safe Place",                     file: "My Safe Place.mp3",                      lang: 'en',  volIdx: 0 },
   { title: "Not A Reward",                      file: "Not A Reward.mp3",                       lang: 'en',  volIdx: 4, added: '2026-04-05' },
   { title: "Not So Bad Afterall",               file: "Not So Bad Afterall.mp3",                lang: 'en',  volIdx: 4 },
   { title: "Not So Bad Afterall (Indie)",       file: "Not So Bad Afterall (Indie).mp3",        lang: 'en',  volIdx: 4 },
