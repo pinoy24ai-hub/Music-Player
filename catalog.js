@@ -39,6 +39,7 @@ var SONGS = [
   { title: "Sayaw Ng Puso (Funk-Pop)",          file: "Sayaw Ng Puso (Funk-Pop).mp3",           lang: 'tl',  volIdx: 0 },
   { title: "Sayaw Pa Tayo",                     file: "Sayaw Pa Tayo.mp3",          duration: "3:30", lang: 'tl', volIdx: 0 },
   { title: "Sumasayaw sa Alon",                 file: "Sumasayaw sa Alon.mp3",                  lang: 'tl',  volIdx: 0 },
+  { title: "With You",                          file: "With You.mp3",                           lang: 'en',  volIdx: 0, added: '2026-04-10' },
   { title: "Busy at Sexy",                       file: "Busy at Sexy.mp3",                       lang: 'tl',  volIdx: 0 },
   { title: "Dancing With The Tide (Salsa)",      file: "Dancing With The Tide (Salsa).mp3",      lang: 'en',  volIdx: 0 },
   { title: "Flames in the Dark Room (Dance Synth)", file: "Flames in the Dark Room (Dance Synth).mp3", lang: 'en', volIdx: 0 },
@@ -234,6 +235,7 @@ var SONGS = [
   { title: "The Rhythm of the Dark",            file: "The Rhythm of the Dark.mp3", duration: "3:30", lang: 'en', volIdx: 4 },
   { title: "The World You Chose",               file: "The World You Chose.mp3",    duration: "3:30", lang: 'en', volIdx: 4 },
   { title: "This Is Us",                        file: "This Is Us.mp3",                         lang: 'en',  volIdx: 4 },
+  { title: "With You (2)",                      file: "With You (2).mp3",                       lang: 'en',  volIdx: 4, added: '2026-04-10' },
   { title: "As Time Goes On (Chill)",           file: "As Time Goes On (Chill).mp3",            lang: 'en',  volIdx: 4 },
 
   // ── (former Good Times — distributed) ────────────────────────
