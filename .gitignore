@@ -1,3 +1,6 @@
 Songs/
 *.mp3
 *.MP3
+
+# Local Netlify folder
+.netlify
