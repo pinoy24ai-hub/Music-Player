@@ -51,7 +51,7 @@ var SONGS = [
   { title: "Just You And Me (Merengue)",         file: "Just You And Me (Merengue).mp3",         lang: 'en',  volIdx: 0, added: '2026-04-13' },
   { title: "Your Sanctuary (Disco)",             file: "Your Sanctuary (Disco).mp3",             lang: 'en',  volIdx: 0 },
   { title: "Dance Partner (Pop - Hip Hop)",      file: "Dance Partner (Pop - Hip Hop).mp3",      lang: 'en',  volIdx: 0 },
-  { title: "Dance Some More (Reggae)",           file: "Dance Some More (Reggae).mp3",           lang: 'en',  volIdx: 0 },
+  { title: "Dance Some More (Reggae)",           file: "Dance Some More (Reggae).mp3",           lang: 'en',  volIdx: 5 },
   { title: "Dancing Through The Years (Salsa)",  file: "Dancing Through The Years (Salsa).mp3",  lang: 'en',  volIdx: 0 },
   { title: "I Wrote The Mountains (Bachata)",    file: "I Wrote The Mountains (Bachata).mp3",    lang: 'en',  volIdx: 0, added: '2026-04-08' },
   { title: "I Wrote The Mountains (Bossa)",      file: "I Wrote The Mountains (Bossa).mp3",      lang: 'en',  volIdx: 1, added: '2026-04-08' },
