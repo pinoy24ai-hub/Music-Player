@@ -161,7 +161,7 @@ var SONGS = [
   { title: "Magkasama (Tayo Lagi)",             file: "Magkasama Tayo Lagi.mp3",                lang: 'tl',  volIdx: 1 },
   { title: "Mahalaga Nandito Ka",               file: "Mahalaga Nandito Ka.mp3",    duration: "3:55", lang: 'tl', volIdx: 1 },
   { title: "Morning Rain",                      file: "Morning Rain.mp3",                       lang: 'en',  volIdx: 1, added: '2026-04-04' },
-  { title: "Muli",                              file: "Muli.mp3",                   duration: "3:30", lang: 'tl', volIdx: 1 },
+  { title: "Muli",                              file: "Muli.mp3",                   duration: "3:30", lang: 'tl', volIdx: 0 },
   { title: "Nagbabalik",                        file: "Nagbabalik.mp3",                         lang: 'tl',  volIdx: 1 },
   { title: "Ulan O Init (Bossa)",               file: "Ulan O Init (Bossa).mp3",                lang: 'ceb', volIdx: 1, added: '2026-04-10' },
   { title: "Ulan O Init (2)",                   file: "Ulan O Init (2).mp3",                    lang: 'ceb', volIdx: 1, added: '2026-04-10' },
