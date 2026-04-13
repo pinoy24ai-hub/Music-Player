@@ -11,6 +11,8 @@ var VOLUMES = [
 var SONGS = [
   // ── Vol 0: Cha-Cha & Disco ─────────────────────────────────────
   { title: "Asim Cha-Cha",                      file: "Asim Cha-Cha.mp3",                       lang: 'tl',  volIdx: 0 },
+  { title: "Already Enough (Merengue)",         file: "Already Enough (Merengue).mp3",          lang: 'en',  volIdx: 0, added: '2026-04-13' },
+  { title: "Already Enough (Salsa)",            file: "Already Enough (Salsa).mp3",             lang: 'en',  volIdx: 0, added: '2026-04-13' },
   { title: "Aslom Cha-Cha",                     file: "Aslom Cha-Cha.mp3",                      lang: 'ceb', volIdx: 0 },
   { title: "Batchata Queen",                    file: "Batchata Queen.mp3",                     lang: 'en',  volIdx: 0 },
   { title: "Cha-Cha Queen",                     file: "Cha-Cha Queen.mp3",                      lang: 'en',  volIdx: 0 },
@@ -34,6 +36,7 @@ var SONGS = [
   { title: "Dance Some More",                   file: "Dance Some More.mp3",                    lang: 'en',  volIdx: 0 },
   { title: "Dancing Through The Years",         file: "Dancing Through The Years.mp3",          lang: 'en',  volIdx: 0 },
   { title: "Dancing With The Tide",             file: "Dancing With The Tide.mp3",              lang: 'en',  volIdx: 0 },
+  { title: "Dancing With The Tide (Merengue)",  file: "Dancing With The Tide (Merengue).mp3",   lang: 'en',  volIdx: 0, added: '2026-04-13' },
   { title: "Kasayaw Ko Habang-Buhay",           file: "Kasayaw Ko Habang-Buhay.mp3", duration: "3:30", lang: 'tl', volIdx: 0 },
   { title: "Sayaw ng Puso",                     file: "Sayaw ng Puso.mp3",          duration: "3:36", lang: 'tl', volIdx: 0 },
   { title: "Sayaw Ng Puso (Funk-Pop)",          file: "Sayaw Ng Puso (Funk-Pop).mp3",           lang: 'tl',  volIdx: 0 },
@@ -45,6 +48,7 @@ var SONGS = [
   { title: "Flames in the Dark Room (Dance Synth)", file: "Flames in the Dark Room (Dance Synth).mp3", lang: 'en', volIdx: 0 },
   { title: "Flames in the Dark Room (Pop)",      file: "Flames in the Dark Room (Pop).mp3",      lang: 'en',  volIdx: 0 },
   { title: "Just You And Me (Salsa)",            file: "Just You And Me (Salsa).mp3",            lang: 'en',  volIdx: 0 },
+  { title: "Just You And Me (Merengue)",         file: "Just You And Me (Merengue).mp3",         lang: 'en',  volIdx: 0, added: '2026-04-13' },
   { title: "Your Sanctuary (Disco)",             file: "Your Sanctuary (Disco).mp3",             lang: 'en',  volIdx: 0 },
   { title: "Dance Partner (Pop - Hip Hop)",      file: "Dance Partner (Pop - Hip Hop).mp3",      lang: 'en',  volIdx: 0 },
   { title: "Dance Some More (Reggae)",           file: "Dance Some More (Reggae).mp3",           lang: 'en',  volIdx: 0 },
@@ -61,6 +65,10 @@ var SONGS = [
   { title: "Nag-Anod Ta (Salsa)",                file: "Nag-Anod Ta (Salsa).mp3",                lang: 'ceb', volIdx: 0, added: '2026-04-10' },
   { title: "Payong (Dance)",                     file: "Payong (Dance).mp3",                      lang: 'tl',  volIdx: 0, added: '2026-04-09' },
   { title: "Sayaw Pa Tayo (Disco)",              file: "Sayaw Pa Tayo (Disco).mp3",              lang: 'tl',  volIdx: 0 },
+  { title: "Sayaw Pa Tayo (Merengue)",           file: "Sayaw Pa Tayo (Merengue).mp3",           lang: 'tl',  volIdx: 0, added: '2026-04-13' },
+  { title: "Silver Moon (Bachata)",              file: "Silver Moon (Bachata).mp3",              lang: 'en',  volIdx: 0, added: '2026-04-13' },
+  { title: "Silver Moon (Cha-Cha)",              file: "Silver Moon (Cha-Cha).mp3",              lang: 'en',  volIdx: 0, added: '2026-04-13' },
+  { title: "Silver Moon (Merengue)",             file: "Silver Moon (Merengue).mp3",             lang: 'en',  volIdx: 0, added: '2026-04-13' },
   { title: "Sumasayaw Sa Alon (Disco 2)",        file: "Sumasayaw Sa Alon (Disco 2).mp3",        lang: 'tl',  volIdx: 0 },
   { title: "We Keep Dancing (Bachata 2)",       file: "We Keep Dancing (Bachata 2).mp3",        lang: 'en',  volIdx: 0 },
   { title: "We Keep Dancing (Batchata)",        file: "We Keep Dancing (Batchata).mp3",         lang: 'en',  volIdx: 0 },
@@ -191,6 +199,7 @@ var SONGS = [
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
+  { title: "Already Enough (Ballad)",           file: "Already Enough (Ballad).mp3",            lang: 'en',  volIdx: 3, added: '2026-04-13' },
   { title: "Always (UK House)",                 file: "Always (UK House).mp3",                  lang: 'en',  volIdx: 3 },
   { title: "Always You",                        file: "Always You.mp3",                         lang: 'en',  volIdx: 3 },
   { title: "As Time Goes On (UK House)",        file: "As Time Goes On (UK House).mp3",         lang: 'en',  volIdx: 3 },
@@ -215,6 +224,7 @@ var SONGS = [
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
+  { title: "Already Enough",                    file: "Already Enough.mp3",                     lang: 'en',  volIdx: 4, added: '2026-04-13' },
   { title: "Before I Healed",                   file: "Before I Healed.mp3",                    lang: 'en',  volIdx: 4, added: '2026-04-05' },
   { title: "Before The Light",                  file: "Before The Light.mp3",                   lang: 'en',  volIdx: 4, added: '2026-04-05' },
   { title: "Dead Star",                         file: "Dead Star.mp3",                          lang: 'en',  volIdx: 4 },
