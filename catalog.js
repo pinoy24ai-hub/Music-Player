@@ -148,6 +148,7 @@ var SONGS = [
   { title: "Bisan Layo Ka (R&B)",               file: "Bisan Layo Ka (R&B).mp3",                lang: 'ceb', volIdx: 1, added: '2026-04-06' },
   { title: "Dagat at Baybayin",                 file: "Dagat at Baybayin.mp3",                  lang: 'tl',  volIdx: 1 },
   { title: "Dagat at Baybayin (Male)",          file: "Dagat at Baybayin (Male).mp3",           lang: 'tl',  volIdx: 1 },
+  { title: "Di Madaling Mahalin (2)",           file: "Di Madaling Mahalin (2).mp3",            lang: 'tl',  volIdx: 1, added: '2026-04-14' },
   { title: "Hindi Ka Dead Star",                file: "Hindi Ka Dead Star.mp3",     duration: "3:30", lang: 'tl', volIdx: 1 },
   { title: "Ibang Daan",                        file: "Ibang Daan.mp3",             duration: "3:39", lang: 'tl', volIdx: 1 },
   { title: "Isang Linggo Lang",                 file: "Isang Linggo Lang.mp3",      duration: "3:58", lang: 'tl', volIdx: 1 },
@@ -178,6 +179,7 @@ var SONGS = [
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
   { title: "Dito Ka Sa Akin (Synth-Pop2)",       file: "Dito Ka Sa AKin (Synth-Pop2).mp3",       lang: 'tl',  volIdx: 2 },
+  { title: "Di Madaling Mahalin",                file: "Di Madaling Mahalin.mp3",                lang: 'tl',  volIdx: 2, added: '2026-04-14' },
   { title: "Habang Tumatagal",                   file: "Habang Tumatagal.mp3",       duration: "3:30", lang: 'tl', volIdx: 2 },
   { title: "Habang Tumatagal (R&B)",             file: "Habang Tumatagal (R&B).mp3",             lang: 'tl',  volIdx: 2 },
   { title: "Hawakan Ang Ngayon (Synth-Pop)",     file: "Hawakan Ang Ngayon (Synth-Pop).mp3",     lang: 'tl',  volIdx: 2 },
