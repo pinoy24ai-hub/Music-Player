@@ -220,7 +220,7 @@ var SONGS = [
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
   { title: "Already Enough (Ballad)",           file: "Already Enough (Ballad).mp3",            lang: 'en',  volIdx: 3, added: '2026-04-13' },
-  { title: "Always (UK House)",                 file: "Always (UK House).mp3",                  lang: 'en',  volIdx: 3 },
+  { title: "Always (UK House)",                 file: "Always (UK House).mp3",                  lang: 'en',  volIdx: 4 },
   { title: "Always You",                        file: "Always You.mp3",                         lang: 'en',  volIdx: 3 },
   { title: "As Time Goes On (UK House)",        file: "As Time Goes On (UK House).mp3",         lang: 'en',  volIdx: 0 },
   { title: "Before Its Gone",                   file: "Before Its Gone.mp3",                    lang: 'en',  volIdx: 3, added: '2026-04-16' },
