@@ -95,7 +95,7 @@ var SONGS = [
   // ── Vol 2: Chill & Bossa ───────────────────────────────────────
   { title: "Beneath the Silver Moon",           file: "Beneath the Silver Moon.mp3",            lang: 'en',  volIdx: 0 },
   { title: "Beneath the Silver Moon (Chill)",   file: "Beneath the Silver Moon (Chill).mp3",    lang: 'en',  volIdx: 3 },
-  { title: "Beneath the Silver Moon (Chill2)",  file: "Beneath the Silver Moon (Chill2).mp3",   lang: 'en',  volIdx: 3 },
+  { title: "Beneath the Silver Moon (Chill2)",  file: "Beneath the Silver Moon (Chill2).mp3",   lang: 'en',  volIdx: 4 },
   { title: "Drifting",                          file: "Drifting.mp3",                           lang: 'en',  volIdx: 0 },
   { title: "Drifting (Chill)",                  file: "Drifting (Chill).mp3",                   lang: 'en',  volIdx: 4 },
   { title: "Golden Hour Horizon",               file: "Golden Hour Horizon.mp3",                lang: 'en',  volIdx: 3 },
