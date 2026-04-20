@@ -173,7 +173,7 @@ var SONGS = [
   { title: "Gisulat Ko Ang Bukid",              file: "Gisulat Ko Ang Bukid.mp3",               lang: 'ceb', volIdx: 2, added: '2026-04-09' },
   { title: "Ilalim Ng Payong 2 (R&B)",          file: "Ilalim Ng Payong 2 (R&B).mp3",           lang: 'tl',  volIdx: 2, added: '2026-04-19' },
   { title: "Ilalom Sa Payong",                  file: "Ilalom Sa Payong.mp3",                   lang: 'ceb', volIdx: 1, added: '2026-04-09' },
-  { title: "Sa Hirap at Ginhawa (Pop)",         file: "Sa Hirap at Ginhawa (Pop).mp3",          lang: 'tl',  volIdx: 2, added: '2026-04-19' },
+  { title: "Sa Hirap at Ginhawa (Pop)",         file: "Sa Hirap at Ginhawa  (Pop).mp3",         lang: 'tl',  volIdx: 2, added: '2026-04-19' },
   { title: "Ulan O Init",                       file: "Ulan O Init.mp3",                        lang: 'ceb', volIdx: 2, added: '2026-04-10' },
   { title: "Himig Ng Ating Kahapon",            file: "Himig Ng Ating Kahapon (Pop).mp3",       lang: 'tl',  volIdx: 2 },
   { title: "Himig Ng Ating Kahapon (Pop Ver2)", file: "Himig Ng Ating Kahapon (Pop Ver2).mp3",  lang: 'tl',  volIdx: 2 },
