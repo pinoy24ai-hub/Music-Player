@@ -80,6 +80,7 @@ var SONGS = [
   { title: "Just You And Me (Salsa)",            file: "Just You And Me (Salsa).mp3",            lang: 'en',  volIdx: 0 },
   { title: "Just You And Me (Merengue)",         file: "Just You And Me (Merengue).mp3",         lang: 'en',  volIdx: 0, added: '2026-04-13' },
   { title: "Just You And Me (Rumba)",            file: "Just You And Me (Rumba).mp3",            lang: 'en',  volIdx: 0, added: '2026-04-25' },
+  { title: "Just Because (Rumba)",              file: "Just Because (Rumba).mp3",               lang: 'en',  volIdx: 0, added: '2026-04-25' },
   { title: "Just Because (K-Pop)",              file: "Just Because (K-Pop).mp3",               lang: 'en',  volIdx: 0, added: '2026-04-17' },
   { title: "Your Sanctuary (Disco)",             file: "Your Sanctuary (Disco).mp3",             lang: 'en',  volIdx: 0 },
   { title: "Dance Partner (Pop - Hip Hop)",      file: "Dance Partner (Pop - Hip Hop).mp3",      lang: 'en',  volIdx: 0 },
