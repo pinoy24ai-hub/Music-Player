@@ -205,7 +205,7 @@ var SONGS = [
   { title: "Ulan O Init",                       file: "Ulan O Init.mp3",                        lang: 'ceb', volIdx: 2, added: '2026-04-10' },
   { title: "Himig Ng Ating Kahapon",            file: "Himig Ng Ating Kahapon (Pop).mp3",       lang: 'tl',  volIdx: 2 },
   { title: "Himig Ng Ating Kahapon (Pop Ver2)", file: "Himig Ng Ating Kahapon (Pop Ver2).mp3",  lang: 'tl',  volIdx: 2 },
-  { title: "Sapat Na Dahilan (Tango)",          file: "Sapat Na Dahilan (Tango).mp3",           lang: 'tl',  volIdx: 2, added: '2026-04-25' },
+  { title: "Sapat Na Dahilan (Tango)",          file: "Sapat Na Dahilan (Tango).mp3",           lang: 'tl',  volIdx: 0, added: '2026-04-25' },
   { title: "Tahanan",                           file: "Tahanan.mp3",                            lang: 'tl',  volIdx: 2 },
   { title: "Tahanan (Ver 2)",                   file: "Tahanan (Ver 2).mp3",                    lang: 'tl',  volIdx: 2 },
   { title: "Tahanan (R&B Funky)",               file: "Tahanan (R&B Funky).mp3",                lang: 'tl',  volIdx: 1 },
