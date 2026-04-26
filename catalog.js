@@ -119,6 +119,8 @@ var SONGS = [
   { title: "Sa Iyong Mga Mata (Latin Dance)",   file: "Sa Iyong Mga Mata (Latin Dance).mp3",    lang: 'tl',  volIdx: 0, added: '2026-04-23' },
   { title: "Sa Iyong Mga Mata (Synth Pop)",     file: "Sa Iyong Mga Mata (Synth Pop).mp3",      lang: 'tl',  volIdx: 0, added: '2026-04-23' },
   { title: "Sa Iyong Mga Mata (Tropical Dance)", file: "Sa Iyong Mga Mata (Tropical Dance).mp3", lang: 'tl',  volIdx: 0, added: '2026-04-23' },
+  { title: "Toe to Toe (Rumba)",                file: "Toe to Toe (Rumba).mp3",                 lang: 'en',  volIdx: 0, added: '2026-04-26' },
+  { title: "Together (Rumba)",                 file: "Together (Rumba).mp3",                    lang: 'en',  volIdx: 0, added: '2026-04-26' },
   { title: "Gisulat Ko Ang Bukid (Disco)",       file: "Gisulat Ko Ang Bukid (Disco).mp3",       lang: 'ceb', volIdx: 0, added: '2026-04-09' },
   { title: "Gisulat Ko Ang Bukid (Salsa)",       file: "Gisulat Ko Ang Bukid (Salsa).mp3",       lang: 'ceb', volIdx: 1, added: '2026-04-09' },
   { title: "Kasayaw Ko Habang-Buhay (Disco)",    file: "Kasayaw Ko Habang-Buhay (Disco).mp3",    lang: 'tl',  volIdx: 0 },
