@@ -338,6 +338,7 @@ var SONGS = [
   { title: "Intertwined",                       file: "Intertwined.mp3",                        lang: 'en',  volIdx: 3 },
   { title: "It's You",                          file: "It's You.mp3",               duration: "3:30", lang: 'en', volIdx: 0 },
   { title: "Just Because",                      file: "Just Because.mp3",                       lang: 'en',  volIdx: 3, added: '2026-04-14' },
+  { title: "Gentle Goodbye",                    file: "Gentle Goodbye.mp3",                     lang: 'en',  volIdx: 3, added: '2026-05-03' },
   { title: "Just Stay With Me",                 file: "Just Stay With Me.mp3",                  lang: 'en',  volIdx: 0 },
   { title: "Lost In The Beat (Acoustic)",       file: "Lost In The Beat (Acoustic).mp3",        lang: 'en',  volIdx: 3, added: '2026-04-17' },
   { title: "Maybe Happy Ending (Ballad)",       file: "Maybe Happy Ending (Ballad).mp3",        lang: 'en',  volIdx: 3, added: '2026-04-17' },
@@ -349,6 +350,7 @@ var SONGS = [
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
   { title: "Already Enough",                    file: "Already Enough.mp3",                     lang: 'en',  volIdx: 4, added: '2026-04-13' },
+  { title: "Gentle Goodbye (Jazz)",             file: "Gentle Goodbye (Jazz).mp3",              lang: 'en',  volIdx: 4, added: '2026-05-03' },
   { title: "Before It's Gone Duet (Jazz)",      file: "Before It's Gone Duet (Jazz).mp3",       lang: 'en',  volIdx: 4, added: '2026-04-20' },
   { title: "Before Its Gone (Chill)",           file: "Before Its Gone (Chill).mp3",            lang: 'en',  volIdx: 4, added: '2026-04-16' },
   { title: "Before I Healed Duet (Jazz)",       file: "Before I Healed Duet (Jazz).mp3",        lang: 'en',  volIdx: 4, added: '2026-04-20' },
