@@ -278,6 +278,11 @@ var SONGS = [
   { title: "Ulan O Init (2)",                   file: "Ulan O Init (2).mp3",                    lang: 'ceb', volIdx: 1, added: '2026-04-10' },
   { title: "Payong (Duet)",                     file: "Payong (Duet).mp3",                      lang: 'tl',  volIdx: 1, added: '2026-04-09' },
   { title: "Himig Ng Ating Kahapon (R&B Funky)", file: "Himig Ng Ating Kahapon (R&B Funky).mp3", lang: 'tl',  volIdx: 1 },
+  { title: "Ang Bituin",                        file: "Ang Bituin.mp3",                         lang: 'tl',  volIdx: 1, added: '2026-07-06' },
+  { title: "Ang Bituin (2)",                    file: "Ang Bituin 2.mp3",                       lang: 'tl',  volIdx: 1, added: '2026-07-06' },
+  { title: "Ang Bituin (Duet)",                 file: "Ang Bituin Duet.mp3",                    lang: 'tl',  volIdx: 1, added: '2026-07-06' },
+  { title: "Unang Tingin",                      file: "Unang Tingin.mp3",                       lang: 'tl',  volIdx: 1, added: '2026-07-06' },
+  { title: "Unang Tingin (2)",                  file: "Unang Tingin 2.mp3",                     lang: 'tl',  volIdx: 1, added: '2026-07-06' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
