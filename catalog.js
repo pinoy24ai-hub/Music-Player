@@ -283,6 +283,7 @@ var SONGS = [
   { title: "Ang Bituin (Duet)",                 file: "Ang Bituin Duet.mp3",                    lang: 'tl',  volIdx: 1, added: '2026-07-06' },
   { title: "Unang Tingin",                      file: "Unang Tingin.mp3",                       lang: 'tl',  volIdx: 1, added: '2026-07-06' },
   { title: "Unang Tingin (2)",                  file: "Unang Tingin 2.mp3",                     lang: 'tl',  volIdx: 1, added: '2026-07-06' },
+  { title: "Higit Pa (2)",                      file: "Higit Pa 2.mp3",                         lang: 'tl',  volIdx: 1, added: '2026-07-07' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
@@ -313,6 +314,7 @@ var SONGS = [
   { title: "Tadhana",                           file: "Tadhana.mp3",                duration: "3:30", lang: 'tl', volIdx: 2 },
   { title: "Tadhana (Male)",                    file: "Tadhana (Male).mp3",                     lang: 'tl',  volIdx: 2 },
   { title: "Tanging Yaman",                     file: "Tanging Yaman.mp3",          duration: "3:30", lang: 'tl', volIdx: 2 },
+  { title: "Higit Pa",                          file: "Higit Pa.mp3",                           lang: 'tl',  volIdx: 2, added: '2026-07-07' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
@@ -357,6 +359,9 @@ var SONGS = [
   { title: "Never That",                        file: "Never That.mp3",                         lang: 'en',  volIdx: 3, added: '2026-04-16' },
   { title: "Now Intertwined",                   file: "Now Intertwined.mp3",                    lang: 'en',  volIdx: 3 },
   { title: "Together, Always",                  file: "Together, Always.mp3",                   lang: 'en',  volIdx: 0 },
+  { title: "Still Building",                    file: "Still Building.mp3",                     lang: 'en',  volIdx: 3, added: '2026-07-07' },
+  { title: "Still Building (2)",                file: "Still Building 2.mp3",                   lang: 'en',  volIdx: 3, added: '2026-07-07' },
+  { title: "Still Building (2) (Synth-Pop)",    file: "Still Building 2 (Synth-Pop).mp3",       lang: 'en',  volIdx: 3, added: '2026-07-07' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
