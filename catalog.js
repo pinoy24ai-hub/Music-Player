@@ -284,6 +284,7 @@ var SONGS = [
   { title: "Unang Tingin",                      file: "Unang Tingin.mp3",                       lang: 'tl',  volIdx: 1, added: '2026-07-06' },
   { title: "Unang Tingin (2)",                  file: "Unang Tingin 2.mp3",                     lang: 'tl',  volIdx: 1, added: '2026-07-06' },
   { title: "Higit Pa (2)",                      file: "Higit Pa 2.mp3",                         lang: 'tl',  volIdx: 1, added: '2026-07-07' },
+  { title: "Higit Pa (2) (Ballad)",              file: "Higit Pa 2 (Ballad).mp3",                lang: 'tl',  volIdx: 1, added: '2026-07-07' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
@@ -315,6 +316,7 @@ var SONGS = [
   { title: "Tadhana (Male)",                    file: "Tadhana (Male).mp3",                     lang: 'tl',  volIdx: 2 },
   { title: "Tanging Yaman",                     file: "Tanging Yaman.mp3",          duration: "3:30", lang: 'tl', volIdx: 2 },
   { title: "Higit Pa",                          file: "Higit Pa.mp3",                           lang: 'tl',  volIdx: 2, added: '2026-07-07' },
+  { title: "Higit Pa (Ballad)",                 file: "Higit Pa (Ballad).mp3",                  lang: 'tl',  volIdx: 2, added: '2026-07-07' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
