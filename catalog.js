@@ -240,6 +240,8 @@ var SONGS = [
   { title: "Tahanan (Ver 2)",                   file: "Tahanan (Ver 2).mp3",                    lang: 'tl',  volIdx: 2 },
   { title: "Tahanan (R&B Funky)",               file: "Tahanan (R&B Funky).mp3",                lang: 'tl',  volIdx: 1 },
   { title: "Tahanan (R&B Funky Ver2)",          file: "Tahanan (R&B Funky Ver2).mp3",           lang: 'tl',  volIdx: 1 },
+  { title: "My Joy 2 (Disco-Pop)",              file: "My Joy 2 (Disco-Pop).mp3",               lang: 'en',  volIdx: 0, added: '2026-07-08' },
+  { title: "My Joy 2 (Nu-Disco)",               file: "My Joy 2 (Nu-Disco).mp3",                lang: 'en',  volIdx: 0, added: '2026-07-08' },
 
   // ── Vol 4: Heart & Soul ────────────────────────────────────────
   { title: "Ania Ako",                          file: "Ania Ako.mp3",                           lang: 'ceb', volIdx: 1 },
@@ -364,6 +366,12 @@ var SONGS = [
   { title: "Still Building",                    file: "Still Building.mp3",                     lang: 'en',  volIdx: 3, added: '2026-07-07' },
   { title: "Still Building (2)",                file: "Still Building 2.mp3",                   lang: 'en',  volIdx: 3, added: '2026-07-07' },
   { title: "Still Building (2) (Synth-Pop)",    file: "Still Building 2 (Synth-Pop).mp3",       lang: 'en',  volIdx: 3, added: '2026-07-07' },
+  { title: "My Joy",                            file: "My Joy.mp3",                             lang: 'en',  volIdx: 3, added: '2026-07-08' },
+  { title: "My Joy (Bossa)",                    file: "My Joy (Bossa).mp3",                     lang: 'en',  volIdx: 3, added: '2026-07-08' },
+  { title: "My Joy (Disco-Pop)",                file: "My Joy (Disco-Pop).mp3",                 lang: 'en',  volIdx: 3, added: '2026-07-08' },
+  { title: "My Joy (Nu-Disco)",                 file: "My Joy (Nu-Disco).mp3",                  lang: 'en',  volIdx: 3, added: '2026-07-08' },
+  { title: "My Joy 2 (Bossa)",                  file: "My Joy 2 (Bossa).mp3",                   lang: 'en',  volIdx: 3, added: '2026-07-08' },
+  { title: "My Joy 2 (Female)",                 file: "My Joy 2 (Female).mp3",                  lang: 'en',  volIdx: 3, added: '2026-07-08' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
