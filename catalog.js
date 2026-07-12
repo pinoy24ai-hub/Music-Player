@@ -242,6 +242,12 @@ var SONGS = [
   { title: "Tahanan (R&B Funky Ver2)",          file: "Tahanan (R&B Funky Ver2).mp3",           lang: 'tl',  volIdx: 1 },
   { title: "My Joy 2 (Disco-Pop)",              file: "My Joy 2 (Disco-Pop).mp3",               lang: 'en',  volIdx: 0, added: '2026-07-08' },
   { title: "My Joy 2 (Nu-Disco)",               file: "My Joy 2 (Nu-Disco).mp3",                lang: 'en',  volIdx: 0, added: '2026-07-08' },
+  { title: "Ikaw Ang Kalipay (Nu-Disco)",       file: "Ikaw Ang Kalipay (Nu-Disco).mp3",        lang: 'ceb', volIdx: 0, added: '2026-07-09' },
+  { title: "Ikaw Ang Kalipay 2 (Nu-Disco)",     file: "Ikaw Ang Kalipay 2 (Nu-Disco).mp3",      lang: 'ceb', volIdx: 0, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya (Nu-Disco)",        file: "Ikaw Ang Ligaya (Nu-Disco).mp3",         lang: 'tl',  volIdx: 0, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya (Upbeat)",          file: "Ikaw Ang Ligaya (Upbeat).mp3",           lang: 'tl',  volIdx: 0, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya 2 (Nu-Disco)",      file: "Ikaw Ang Ligaya 2 (Nu-Disco).mp3",       lang: 'tl',  volIdx: 0, added: '2026-07-09' },
+  { title: "Labaw Pa (Disco-Pop)",              file: "Labaw Pa (Disco-Pop).mp3",               lang: 'ceb', volIdx: 0, added: '2026-07-09' },
 
   // ── Vol 4: Heart & Soul ────────────────────────────────────────
   { title: "Ania Ako",                          file: "Ania Ako.mp3",                           lang: 'ceb', volIdx: 1 },
@@ -287,6 +293,12 @@ var SONGS = [
   { title: "Unang Tingin (2)",                  file: "Unang Tingin 2.mp3",                     lang: 'tl',  volIdx: 1, added: '2026-07-06' },
   { title: "Higit Pa (2)",                      file: "Higit Pa 2.mp3",                         lang: 'tl',  volIdx: 1, added: '2026-07-07' },
   { title: "Higit Pa (2) (Ballad)",              file: "Higit Pa 2 (Ballad).mp3",                lang: 'tl',  volIdx: 1, added: '2026-07-07' },
+  { title: "Ang Bituin (Bossa)",                 file: "Ang Bituin (Bossa).mp3",                 lang: 'tl',  volIdx: 1, added: '2026-07-09' },
+  { title: "Higit Pa (Bossa)",                   file: "Higit Pa (Bossa).mp3",                   lang: 'tl',  volIdx: 1, added: '2026-07-09' },
+  { title: "Ikaw Ang Kalipay (Bossa)",           file: "Ikaw Ang Kalipay (Bossa).mp3",           lang: 'ceb', volIdx: 1, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya (Bossa)",            file: "Ikaw Ang Ligaya (Bossa).mp3",            lang: 'tl',  volIdx: 1, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya 2 (Acoustic)",       file: "Ikaw Ang Ligaya 2 (Acoustic).mp3",       lang: 'tl',  volIdx: 1, added: '2026-07-09' },
+  { title: "Labaw Pa (Bossa)",                   file: "Labaw Pa (Bossa).mp3",                   lang: 'ceb', volIdx: 1, added: '2026-07-09' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
@@ -319,6 +331,12 @@ var SONGS = [
   { title: "Tanging Yaman",                     file: "Tanging Yaman.mp3",          duration: "3:30", lang: 'tl', volIdx: 2 },
   { title: "Higit Pa",                          file: "Higit Pa.mp3",                           lang: 'tl',  volIdx: 2, added: '2026-07-07' },
   { title: "Higit Pa (Ballad)",                 file: "Higit Pa (Ballad).mp3",                  lang: 'tl',  volIdx: 2, added: '2026-07-07' },
+  { title: "Ang Bituin 2 (Bossa)",               file: "Ang Bituin 2 (Bossa).mp3",               lang: 'tl',  volIdx: 2, added: '2026-07-09' },
+  { title: "Higit Pa 2 (Bossa)",                 file: "Higit Pa 2 (Bossa).mp3",                 lang: 'tl',  volIdx: 2, added: '2026-07-09' },
+  { title: "Ikaw Ang Kalipay (Acoustic)",        file: "Ikaw Ang Kalipay (Acoustic).mp3",        lang: 'ceb', volIdx: 2, added: '2026-07-09' },
+  { title: "Ikaw Ang Kalipay 2 (Bossa)",         file: "Ikaw Ang Kalipay 2 (Bossa).mp3",         lang: 'ceb', volIdx: 2, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya (Acoustic)",         file: "Ikaw Ang Ligaya (Acoustic).mp3",         lang: 'tl',  volIdx: 2, added: '2026-07-09' },
+  { title: "Ikaw Ang Ligaya 2 (Bossa)",          file: "Ikaw Ang Ligaya 2 (Bossa).mp3",          lang: 'tl',  volIdx: 2, added: '2026-07-09' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
@@ -372,6 +390,7 @@ var SONGS = [
   { title: "My Joy (Nu-Disco)",                 file: "My Joy (Nu-Disco).mp3",                  lang: 'en',  volIdx: 3, added: '2026-07-08' },
   { title: "My Joy 2 (Bossa)",                  file: "My Joy 2 (Bossa).mp3",                   lang: 'en',  volIdx: 3, added: '2026-07-08' },
   { title: "My Joy 2 (Female)",                 file: "My Joy 2 (Female).mp3",                  lang: 'en',  volIdx: 3, added: '2026-07-08' },
+  { title: "Still Building (Bossa)",            file: "Still Building (Bossa).mp3",             lang: 'en',  volIdx: 3, added: '2026-07-09' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
