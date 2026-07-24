@@ -248,6 +248,8 @@ var SONGS = [
   { title: "Ikaw Ang Ligaya (Upbeat)",          file: "Ikaw Ang Ligaya (Upbeat).mp3",           lang: 'tl',  volIdx: 0, added: '2026-07-09' },
   { title: "Ikaw Ang Ligaya 2 (Nu-Disco)",      file: "Ikaw Ang Ligaya 2 (Nu-Disco).mp3",       lang: 'tl',  volIdx: 0, added: '2026-07-09' },
   { title: "Labaw Pa (Disco-Pop)",              file: "Labaw Pa (Disco-Pop).mp3",               lang: 'ceb', volIdx: 0, added: '2026-07-09' },
+  { title: "Mag-Uban Ko Nimo (Nu-Disco)",       file: "Mag-Uban Ko Nimo (Nu-Disco).mp3",        lang: 'ceb', volIdx: 0, added: '2026-07-10' },
+  { title: "You Are The Word (Disco-Pop)",      file: "You Are The Word (Disco-Pop).mp3",       lang: 'en',  volIdx: 0, added: '2026-07-10' },
 
   // ── Vol 4: Heart & Soul ────────────────────────────────────────
   { title: "Ania Ako",                          file: "Ania Ako.mp3",                           lang: 'ceb', volIdx: 1 },
@@ -299,6 +301,9 @@ var SONGS = [
   { title: "Ikaw Ang Ligaya (Bossa)",            file: "Ikaw Ang Ligaya (Bossa).mp3",            lang: 'tl',  volIdx: 1, added: '2026-07-09' },
   { title: "Ikaw Ang Ligaya 2 (Acoustic)",       file: "Ikaw Ang Ligaya 2 (Acoustic).mp3",       lang: 'tl',  volIdx: 1, added: '2026-07-09' },
   { title: "Labaw Pa (Bossa)",                   file: "Labaw Pa (Bossa).mp3",                   lang: 'ceb', volIdx: 1, added: '2026-07-09' },
+  { title: "Ikaw Ang Pulong (Acoustic)",         file: "Ikaw Ang Pulong (Acoustic).mp3",         lang: 'ceb', volIdx: 1, added: '2026-07-10' },
+  { title: "Mag-Uban Ko Nimo (Bossa)",           file: "Mag-Uban Ko Nimo (Bossa).mp3",           lang: 'ceb', volIdx: 1, added: '2026-07-10' },
+  { title: "Mag-Uban Ko Nimo 2 (Nu-Disco)",      file: "Mag-Uban Ko Nimo 2 (Nu-Disco).mp3",      lang: 'ceb', volIdx: 1, added: '2026-07-10' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
@@ -337,6 +342,9 @@ var SONGS = [
   { title: "Ikaw Ang Kalipay 2 (Bossa)",         file: "Ikaw Ang Kalipay 2 (Bossa).mp3",         lang: 'ceb', volIdx: 2, added: '2026-07-09' },
   { title: "Ikaw Ang Ligaya (Acoustic)",         file: "Ikaw Ang Ligaya (Acoustic).mp3",         lang: 'tl',  volIdx: 2, added: '2026-07-09' },
   { title: "Ikaw Ang Ligaya 2 (Bossa)",          file: "Ikaw Ang Ligaya 2 (Bossa).mp3",          lang: 'tl',  volIdx: 2, added: '2026-07-09' },
+  { title: "Ang Bituin (Acoustic)",              file: "Ang Bituin (Acoustic).mp3",              lang: 'tl',  volIdx: 2, added: '2026-07-10' },
+  { title: "Labaw Pa (Acoustic)",                file: "Labaw Pa (Acoustic).mp3",                lang: 'ceb', volIdx: 2, added: '2026-07-10' },
+  { title: "Mag-Uban Ko Nimo 2 (Bossa)",         file: "Mag-Uban Ko Nimo 2 (Bossa).mp3",         lang: 'ceb', volIdx: 2, added: '2026-07-10' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
@@ -391,6 +399,9 @@ var SONGS = [
   { title: "My Joy 2 (Bossa)",                  file: "My Joy 2 (Bossa).mp3",                   lang: 'en',  volIdx: 3, added: '2026-07-08' },
   { title: "My Joy 2 (Female)",                 file: "My Joy 2 (Female).mp3",                  lang: 'en',  volIdx: 3, added: '2026-07-08' },
   { title: "Still Building (Bossa)",            file: "Still Building (Bossa).mp3",             lang: 'en',  volIdx: 3, added: '2026-07-09' },
+  { title: "You Are The Word (Bossa)",          file: "You Are The Word (Bossa).mp3",           lang: 'en',  volIdx: 3, added: '2026-07-10' },
+  { title: "You Are The Word 2 (Disco-Pop)",    file: "You Are The Word 2 (Disco-Pop).mp3",     lang: 'en',  volIdx: 3, added: '2026-07-10' },
+  { title: "You Are The Word 3 (Bossa)",        file: "You Are The Word 3 (Bossa).mp3",         lang: 'en',  volIdx: 3, added: '2026-07-10' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
@@ -443,6 +454,8 @@ var SONGS = [
   { title: "With You (2)",                      file: "With You (2).mp3",                       lang: 'en',  volIdx: 4, added: '2026-04-10' },
   { title: "With You Duet (Jazz)",              file: "With You Duet (Jazz).mp3",               lang: 'en',  volIdx: 4, added: '2026-04-20' },
   { title: "As Time Goes On (Chill)",           file: "As Time Goes On (Chill).mp3",            lang: 'en',  volIdx: 4 },
+  { title: "You Are The Word 2 (Bossa)",        file: "You Are The Word 2 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
+  { title: "You Are The Word 4 (Bossa)",        file: "You Are The Word 4 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
 
   // ── (former Good Times — distributed) ────────────────────────
   { title: "Baka Ang Happy Ending",             file: "Baka Ang Happy Ending.mp3",              lang: 'tl',  volIdx: 1 },
