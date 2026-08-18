@@ -402,6 +402,11 @@ var SONGS = [
   { title: "You Are The Word (Bossa)",          file: "You Are The Word (Bossa).mp3",           lang: 'en',  volIdx: 3, added: '2026-07-10' },
   { title: "You Are The Word 2 (Disco-Pop)",    file: "You Are The Word 2 (Disco-Pop).mp3",     lang: 'en',  volIdx: 3, added: '2026-07-10' },
   { title: "You Are The Word 3 (Bossa)",        file: "You Are The Word 3 (Bossa).mp3",         lang: 'en',  volIdx: 3, added: '2026-07-10' },
+  { title: "Every Season (Acoustic Pop)",       file: "Every Season (Acoustic Pop).mp3",        lang: 'en',  volIdx: 3, added: '2026-07-11' },
+  { title: "Every Season (Duet)",               file: "Every Season (Duet).mp3",                lang: 'en',  volIdx: 3, added: '2026-07-11' },
+  { title: "Every Season (Neoclassical)",       file: "Every Season (Neoclassical).mp3",        lang: 'en',  volIdx: 3, added: '2026-07-11' },
+  { title: "Every Season (Piano Ballad)",       file: "Every Season (Piano Ballad).mp3",        lang: 'en',  volIdx: 3, added: '2026-07-11' },
+  { title: "Every Season (Pop Ballad)",         file: "Every Season (Pop Ballad).mp3",          lang: 'en',  volIdx: 3, added: '2026-07-11' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
@@ -456,6 +461,7 @@ var SONGS = [
   { title: "As Time Goes On (Chill)",           file: "As Time Goes On (Chill).mp3",            lang: 'en',  volIdx: 4 },
   { title: "You Are The Word 2 (Bossa)",        file: "You Are The Word 2 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
   { title: "You Are The Word 4 (Bossa)",        file: "You Are The Word 4 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
+  { title: "Every Season (Duet 2)",             file: "Every Season (Duet 2).mp3",              lang: 'en',  volIdx: 4, added: '2026-07-11' },
 
   // ── (former Good Times — distributed) ────────────────────────
   { title: "Baka Ang Happy Ending",             file: "Baka Ang Happy Ending.mp3",              lang: 'tl',  volIdx: 1 },
