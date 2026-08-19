@@ -306,7 +306,7 @@ var SONGS = [
   { title: "Mag-Uban Ko Nimo 2 (Nu-Disco)",      file: "Mag-Uban Ko Nimo 2 (Nu-Disco).mp3",      lang: 'ceb', volIdx: 1, added: '2026-07-10' },
   { title: "Hanggang Kailan (Duet)",             file: "Hanggang Kailan (Duet).mp3",             lang: 'tl',  volIdx: 1, added: '2026-07-12' },
   { title: "Hangtod Kanus-a",                    file: "Hangtod Kanus-a.mp3",                    lang: 'ceb', volIdx: 1, added: '2026-07-12' },
-  { title: "Hangtod Kanus-a (Bossa)",            file: "Hangtod Kanus-a (Bossa).mp3",            lang: 'ceb', volIdx: 1, added: '2026-07-12' },
+  { title: "Hangtod Kanus-a (Bossa)",            file: "Hangtod Kanus-a  (Bossa).mp3",           lang: 'ceb', volIdx: 1, added: '2026-07-12' },
   { title: "Sama Sa Bulak (Female)",             file: "Sama Sa Bulak (Female).mp3",             lang: 'ceb', volIdx: 1, added: '2026-07-12' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
