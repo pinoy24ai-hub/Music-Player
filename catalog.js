@@ -350,7 +350,7 @@ var SONGS = [
   { title: "Labaw Pa (Acoustic)",                file: "Labaw Pa (Acoustic).mp3",                lang: 'ceb', volIdx: 2, added: '2026-07-10' },
   { title: "Mag-Uban Ko Nimo 2 (Bossa)",         file: "Mag-Uban Ko Nimo 2 (Bossa).mp3",         lang: 'ceb', volIdx: 2, added: '2026-07-10' },
   { title: "Hanggang Kailan (Neoclassical)",     file: "Hanggang Kailan (Neoclassical).mp3",     lang: 'tl',  volIdx: 2, added: '2026-07-12' },
-  { title: "Hangtod Kanus-a (Pop)",              file: "Hangtod Kanus-a (Pop).mp3",              lang: 'ceb', volIdx: 2, added: '2026-07-12' },
+  { title: "Hangtod Kanus-a (Pop)",              file: "Hangtod Kanus-a  (Pop).mp3",             lang: 'ceb', volIdx: 2, added: '2026-07-12' },
   { title: "Sama Sa Bulak (Male)",               file: "Sama Sa Bulak (Male).mp3",               lang: 'ceb', volIdx: 2, added: '2026-07-12' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
