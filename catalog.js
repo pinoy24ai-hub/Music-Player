@@ -304,6 +304,10 @@ var SONGS = [
   { title: "Ikaw Ang Pulong (Acoustic)",         file: "Ikaw Ang Pulong (Acoustic).mp3",         lang: 'ceb', volIdx: 1, added: '2026-07-10' },
   { title: "Mag-Uban Ko Nimo (Bossa)",           file: "Mag-Uban Ko Nimo (Bossa).mp3",           lang: 'ceb', volIdx: 1, added: '2026-07-10' },
   { title: "Mag-Uban Ko Nimo 2 (Nu-Disco)",      file: "Mag-Uban Ko Nimo 2 (Nu-Disco).mp3",      lang: 'ceb', volIdx: 1, added: '2026-07-10' },
+  { title: "Hanggang Kailan (Duet)",             file: "Hanggang Kailan (Duet).mp3",             lang: 'tl',  volIdx: 1, added: '2026-07-12' },
+  { title: "Hangtod Kanus-a",                    file: "Hangtod Kanus-a.mp3",                    lang: 'ceb', volIdx: 1, added: '2026-07-12' },
+  { title: "Hangtod Kanus-a (Bossa)",            file: "Hangtod Kanus-a (Bossa).mp3",            lang: 'ceb', volIdx: 1, added: '2026-07-12' },
+  { title: "Sama Sa Bulak (Female)",             file: "Sama Sa Bulak (Female).mp3",             lang: 'ceb', volIdx: 1, added: '2026-07-12' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
@@ -345,6 +349,9 @@ var SONGS = [
   { title: "Ang Bituin (Acoustic)",              file: "Ang Bituin (Acoustic).mp3",              lang: 'tl',  volIdx: 2, added: '2026-07-10' },
   { title: "Labaw Pa (Acoustic)",                file: "Labaw Pa (Acoustic).mp3",                lang: 'ceb', volIdx: 2, added: '2026-07-10' },
   { title: "Mag-Uban Ko Nimo 2 (Bossa)",         file: "Mag-Uban Ko Nimo 2 (Bossa).mp3",         lang: 'ceb', volIdx: 2, added: '2026-07-10' },
+  { title: "Hanggang Kailan (Neoclassical)",     file: "Hanggang Kailan (Neoclassical).mp3",     lang: 'tl',  volIdx: 2, added: '2026-07-12' },
+  { title: "Hangtod Kanus-a (Pop)",              file: "Hangtod Kanus-a (Pop).mp3",              lang: 'ceb', volIdx: 2, added: '2026-07-12' },
+  { title: "Sama Sa Bulak (Male)",               file: "Sama Sa Bulak (Male).mp3",               lang: 'ceb', volIdx: 2, added: '2026-07-12' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
@@ -407,6 +414,8 @@ var SONGS = [
   { title: "Every Season (Neoclassical)",       file: "Every Season (Neoclassical).mp3",        lang: 'en',  volIdx: 3, added: '2026-07-11' },
   { title: "Every Season (Piano Ballad)",       file: "Every Season (Piano Ballad).mp3",        lang: 'en',  volIdx: 3, added: '2026-07-11' },
   { title: "Every Season (Pop Ballad)",         file: "Every Season (Pop Ballad).mp3",          lang: 'en',  volIdx: 3, added: '2026-07-11' },
+  { title: "Like A Rose",                       file: "Like A Rose.mp3",                        lang: 'en',  volIdx: 3, added: '2026-07-12' },
+  { title: "Like A Rose (Synth-Pop)",           file: "Like A Rose (Synth-Pop).mp3",            lang: 'en',  volIdx: 3, added: '2026-07-12' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
@@ -462,6 +471,7 @@ var SONGS = [
   { title: "You Are The Word 2 (Bossa)",        file: "You Are The Word 2 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
   { title: "You Are The Word 4 (Bossa)",        file: "You Are The Word 4 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
   { title: "Every Season (Duet 2)",             file: "Every Season (Duet 2).mp3",              lang: 'en',  volIdx: 4, added: '2026-07-11' },
+  { title: "Like A Rose (Bossa)",               file: "Like A Rose (Bossa).mp3",                lang: 'en',  volIdx: 4, added: '2026-07-12' },
 
   // ── (former Good Times — distributed) ────────────────────────
   { title: "Baka Ang Happy Ending",             file: "Baka Ang Happy Ending.mp3",              lang: 'tl',  volIdx: 1 },
