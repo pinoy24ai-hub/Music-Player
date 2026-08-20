@@ -416,6 +416,8 @@ var SONGS = [
   { title: "Every Season (Pop Ballad)",         file: "Every Season (Pop Ballad).mp3",          lang: 'en',  volIdx: 3, added: '2026-07-11' },
   { title: "Like A Rose",                       file: "Like A Rose.mp3",                        lang: 'en',  volIdx: 3, added: '2026-07-12' },
   { title: "Like A Rose (Synth-Pop)",           file: "Like A Rose (Synth-Pop).mp3",            lang: 'en',  volIdx: 3, added: '2026-07-12' },
+  { title: "Forever You (Acoustic)",            file: "Forever You (Acoustic).mp3",             lang: 'en',  volIdx: 3, added: '2026-08-20' },
+  { title: "Forever You (Pop)",                 file: "Forever You (Pop).mp3",                  lang: 'en',  volIdx: 3, added: '2026-08-20' },
 
   // ── Vol 7: English Soul ────────────────────────────────────────
   { title: "As Time Goes On",                   file: "As Time Goes On.mp3",                    lang: 'en',  volIdx: 3 },
@@ -472,6 +474,8 @@ var SONGS = [
   { title: "You Are The Word 4 (Bossa)",        file: "You Are The Word 4 (Bossa).mp3",         lang: 'en',  volIdx: 4, added: '2026-07-10' },
   { title: "Every Season (Duet 2)",             file: "Every Season (Duet 2).mp3",              lang: 'en',  volIdx: 4, added: '2026-07-11' },
   { title: "Like A Rose (Bossa)",               file: "Like A Rose  (Bossa).mp3",               lang: 'en',  volIdx: 4, added: '2026-07-12' },
+  { title: "Forever You (Bossa)",               file: "Forever You (Bossa).mp3",                lang: 'en',  volIdx: 4, added: '2026-08-20' },
+  { title: "Forever You (R&B)",                 file: "Forever You (R&B).mp3",                  lang: 'en',  volIdx: 4, added: '2026-08-20' },
 
   // ── (former Good Times — distributed) ────────────────────────
   { title: "Baka Ang Happy Ending",             file: "Baka Ang Happy Ending.mp3",              lang: 'tl',  volIdx: 1 },
