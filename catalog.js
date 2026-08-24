@@ -250,6 +250,7 @@ var SONGS = [
   { title: "Labaw Pa (Disco-Pop)",              file: "Labaw Pa (Disco-Pop).mp3",               lang: 'ceb', volIdx: 0, added: '2026-07-09' },
   { title: "Mag-Uban Ko Nimo (Nu-Disco)",       file: "Mag-Uban Ko Nimo (Nu-Disco).mp3",        lang: 'ceb', volIdx: 0, added: '2026-07-10' },
   { title: "You Are The Word (Disco-Pop)",      file: "You Are The Word (Disco-Pop).mp3",       lang: 'en',  volIdx: 0, added: '2026-07-10' },
+  { title: "Hangtod Sa Hangtod (K-Pop)",        file: "Hangtod Sa Hangtod (K-Pop).mp3",         lang: 'ceb', volIdx: 0, added: '2026-08-21' },
 
   // ── Vol 4: Heart & Soul ────────────────────────────────────────
   { title: "Ania Ako",                          file: "Ania Ako.mp3",                           lang: 'ceb', volIdx: 1 },
@@ -308,6 +309,10 @@ var SONGS = [
   { title: "Hangtod Kanus-a",                    file: "Hangtod Kanus-a.mp3",                    lang: 'ceb', volIdx: 1, added: '2026-07-12' },
   { title: "Hangtod Kanus-a (Bossa)",            file: "Hangtod Kanus-a  (Bossa).mp3",           lang: 'ceb', volIdx: 1, added: '2026-07-12' },
   { title: "Sama Sa Bulak (Female)",             file: "Sama Sa Bulak  (Female).mp3",            lang: 'ceb', volIdx: 1, added: '2026-07-12' },
+  { title: "Hangtod Sa Hangtod (Soft R&B)",      file: "Hangtod Sa Hangtod (Soft R&B).mp3",      lang: 'ceb', volIdx: 1, added: '2026-08-21' },
+  { title: "Sapat Na Dahilan (Bossa)",           file: "Sapat Na Dahilan (Bossa).mp3",           lang: 'tl',  volIdx: 1, added: '2026-08-21' },
+  { title: "Sapat Na Dahilan (Pop Soul)",        file: "Sapat Na Dahilan (Pop Soul).mp3",        lang: 'tl',  volIdx: 1, added: '2026-08-21' },
+  { title: "Sapat Na Dahilan (Soft R&B)",        file: "Sapat Na Dahilan (Soft R&B).mp3",        lang: 'tl',  volIdx: 1, added: '2026-08-21' },
 
   // ── Vol 5: Devotion ────────────────────────────────────────────
   { title: "Dito Ka Sa Akin (Synth-Pop)",        file: "Dito Ka Sa AKin (Synth-Pop).mp3",        lang: 'tl',  volIdx: 2 },
@@ -352,6 +357,7 @@ var SONGS = [
   { title: "Hanggang Kailan (Neoclassical)",     file: "Hanggang Kailan (Neoclassical).mp3",     lang: 'tl',  volIdx: 2, added: '2026-07-12' },
   { title: "Hangtod Kanus-a (Pop)",              file: "Hangtod Kanus-a  (Pop).mp3",             lang: 'ceb', volIdx: 2, added: '2026-07-12' },
   { title: "Sama Sa Bulak (Male)",               file: "Sama Sa Bulak  (Male).mp3",              lang: 'ceb', volIdx: 2, added: '2026-07-12' },
+  { title: "Hangtod Sa Hangtod",                 file: "Hangtod Sa Hangtod.mp3",                 lang: 'ceb', volIdx: 2, added: '2026-08-21' },
 
   // ── Vol 6: English Love ────────────────────────────────────────
   { title: "Always",                            file: "Always.mp3",                             lang: 'en',  volIdx: 3 },
